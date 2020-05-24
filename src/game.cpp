@@ -3,10 +3,15 @@
 #include "GameObject.h"
 #include "deck.h"
 
-GameObject* player;
-GameObject* cardOne;
-GameObject* cardTwo;
-Card* hand;
+GameObject* cardOne = NULL;
+GameObject* cardTwo = NULL;
+GameObject* background = NULL;
+GameObject* startButton = NULL;
+
+int window_height = 720;
+int window_width = 1280;
+
+Card* hand = NULL;
 std::vector<GameObject> gameEntities;
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -25,7 +30,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
 		std::cout << "Subsystem initialized..." << std::endl;
 
-		window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+		window = SDL_CreateWindow(title, xpos, ypos, width, height, SDL_WINDOW_RESIZABLE);
 
 		if (window)
 		{
@@ -44,44 +49,65 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
-	
-	//player = new GameObject("../assets/cards/ace_of_clubs.png", 0, 0);
+
+	// Game start load BG	
+	background = new GameObject("../assets/bg.png", 0, 0, 1080, 1920);
+	// Start Button
+	startButton = new GameObject("../assets/start.png", 0, 0, 150, 300);
 
 	Deck* deck = new Deck();
 	deck->shuffle();
 	hand = deck->deal();
 	cardOne = hand[0].cardObj;
 	cardTwo = hand[1].cardObj;
-	//std::cout << hand[0].getRank() << hand[0].getSuit() << std::endl;
+	std::cout << hand[0].getRank() << hand[0].getSuit() << std::endl;
 }
 
 void Game::handleEvents()
 {
 	SDL_Event event;
-	SDL_PollEvent(&event);
+	//SDL_PollEvent(&event);
 
-	switch (event.type)
-	{
-	case SDL_QUIT:
-		isRunning = false;
-		break;
-	default:
-		break;
+	while (SDL_PollEvent(&event)) {
+		switch (event.type)
+		{
+		case SDL_WINDOWEVENT:
+			switch (event.window.event)
+			{
+			case SDL_WINDOWEVENT_SIZE_CHANGED:
+				window_height = event.window.data2;
+				window_width = event.window.data1;
+				std::cout << event.window.data1 << std::endl;
+				std::cout << event.window.data2 << std::endl;
+				break;
+			default:
+				break;
+			}
+			break;
+		case SDL_QUIT:
+			isRunning = false;
+			break;
+		default:
+			break;
+		}
 	}
 }
 
 void Game::update()
 {
-	//player->update();
-	cardOne->update();
-	cardTwo->update();
+	background->update(0, 0, window_height, window_width);
+	startButton->update(0, 0, 150, 300);
+	cardOne->update((window_width / 2), (window_height - 200), 274, 188);
+	cardTwo->update(((window_width / 2) - 188), (window_height - 200), 274, 188);
 }
 
 void Game::render()
 {
 	SDL_RenderClear(renderer);
+	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
 	// This is where we would add stuff to render
-	//player->render();
+	background->render();
+	startButton->render();
 	cardOne->render();
 	cardTwo->render();
 	SDL_RenderPresent(renderer);

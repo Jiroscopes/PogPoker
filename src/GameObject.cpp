@@ -1,12 +1,14 @@
 #include "GameObject.h"
 #include "TextureManager.h"
 
-GameObject::GameObject(const char* textureSheet, int x, int y)
+GameObject::GameObject(const char* textureSheet, int x, int y, int img_height, int img_width)
 {
 	objTexture = TextureManager::LoadTexture(textureSheet);
 
 	xpos = x;
 	ypos = y;
+	height = img_height;
+	width = img_width;
 }
 
 GameObject::~GameObject()
@@ -14,21 +16,22 @@ GameObject::~GameObject()
 
 }
 
-void GameObject::update()
+void GameObject::update(int x, int y, int display_height, int display_width)
 {
-	//xpos++;
-	//ypos++;
 
-	srcRect.h = 726;
-	srcRect.w = 500;
+	xpos = x;
+	ypos = y;
+
+	srcRect.h = height; // 726
+	srcRect.w = width; // 500
 	srcRect.x = 0;
 	srcRect.y = 0;
 
+
+	destRect.h = display_height; // 274
+	destRect.w = display_width; // 188
 	destRect.x = xpos;
 	destRect.y = ypos;
-
-	destRect.h = 274;
-	destRect.w = 188;
 }
 
 void GameObject::render()

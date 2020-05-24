@@ -66,11 +66,11 @@ Card::Card(int cardNum)
 	fileName.append("_of_");
 	fileName.append(suitAsString);
 	fileName.append(".png");
-	std::cout << fileName << std::endl;
 
 	std::string test = "../assets/cards/" + fileName;
 	const char* temp = test.c_str();
-	cardObj = new GameObject(temp, cardNum * 10, cardNum * 10);
+	// Card img size is currently 726x500
+	cardObj = new GameObject(temp, 0, 0, 726, 500);
 }
 
 int Card::getRank() {

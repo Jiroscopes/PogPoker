@@ -1,38 +1,10 @@
 #include <iostream>
 #include "game.h"
 
-
-//Card randomCard(Deck deck) 
-//{
-//    unsigned seed = time(0);
-//    srand(seed);
-//    int v1 = rand() % 51;
-//
-////    cout << v1;
-////    cout << "\n";
-//    // printf("%d of %s\n", deck.deck[v1].getRank(), deck.deck[v1].getSuit());
-//     cout << deck.deck[v1].getSuit();
-//     cout << "\n";
-//     cout << deck.deck[v1].getRank();
-//    return deck.deck[v1];
-//}
-
 Game* game = nullptr;
 
 int main() 
 {
-    //Deck testDeck;
-    //randomCard(testDeck);
-	//SDL_Init(SDL_INIT_EVERYTHING);
-	//SDL_Window* window = SDL_CreateWindow("title", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 600, 400, SDL_WINDOW_SHOWN);
-	//SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
-
-	//SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-	//SDL_RenderClear(renderer);
-
-	//SDL_RenderPresent(renderer);
-	//SDL_Delay(3000);
-
 	const int FPS = 60;
 	const int FRAME_DELAY = 1000 / FPS; // 16.67
 
