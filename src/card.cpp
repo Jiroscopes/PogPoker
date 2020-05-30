@@ -1,8 +1,8 @@
 #include "card.h"
 #include <string>
 
-const char* Card::SUITS[] = {"Diamond", "Club", "Heart", "Spade"};
-const int Card::RANKS[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}; 
+//const char* Card::SUITS[] = {"Diamond", "Club", "Heart", "Spade"};
+//const int Card::RANKS[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}; 
 int card;
 int suit;
 int rank;
