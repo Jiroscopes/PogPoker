@@ -136,8 +136,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\card.h" />
+    <ClInclude Include="..\include\CardComponent.h" />
+    <ClInclude Include="..\include\Component.h" />
     <ClInclude Include="..\include\deck.h" />
+    <ClInclude Include="..\include\Entity.h" />
+    <ClInclude Include="..\include\EntityManager.h" />
     <ClInclude Include="..\include\game.h" />
     <ClInclude Include="..\include\GameObject.h" />
     <ClInclude Include="..\include\GraphicsComponent.h" />
@@ -147,8 +150,10 @@
     <ClInclude Include="..\include\TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\card.cpp" />
+    <ClCompile Include="..\src\CardComponent.cpp" />
     <ClCompile Include="..\src\deck.cpp" />
+    <ClCompile Include="..\src\Entity.cpp" />
+    <ClCompile Include="..\src\EntityManager.cpp" />
     <ClCompile Include="..\src\game.cpp" />
     <ClCompile Include="..\src\GameObject.cpp" />
     <ClCompile Include="..\src\GraphicsComponent.cpp" />

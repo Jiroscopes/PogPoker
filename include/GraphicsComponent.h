@@ -1,15 +1,18 @@
 #pragma once
+#include "Component.h"
 #include "SDL.h"
-#include "PositionComponent.h"
 //#include "SDL_image.h"
 
-class GraphicsComponent
+class GraphicsComponent : public Component
 {
 private:
-	
-	SDL_Rect srcRect, destRect;
+	SDL_Texture* objTexture;
+	SDL_Rect srcRect, destRect; // src = texture, dest = size on screen
 public:
-	GraphicsComponent(const char* textureSheet, PositionComponent* position);
+	GraphicsComponent(const char* textureSheet, Entity* entity, int h, int w);
 	~GraphicsComponent();
+	void setHeight(int h) { srcRect.h = h; }
+	void setWidth(int w) { srcRect.w = w; }
 	void update();
+	void render();
 };

@@ -1,21 +1,9 @@
-#include "card.h"
+#include "CardComponent.h"
 #include <string>
 
-//const char* Card::SUITS[] = {"Diamond", "Club", "Heart", "Spade"};
-//const int Card::RANKS[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13}; 
-int card;
-int suit;
-int rank;
-
-GameObject* cardObj;
-
-Card::Card() 
+CardComponent::CardComponent(int cardNum) 
 {
-    card = 0;
-}
-
-Card::Card(int cardNum) 
-{
+	card = cardNum;
 	rank = (cardNum % 13) + 1;
 	suit = cardNum / 13;
 
@@ -70,16 +58,17 @@ Card::Card(int cardNum)
 	std::string test = "../assets/cards/" + fileName;
 	const char* temp = test.c_str();
 	// Card img size is currently 726x500
-	cardObj = new GameObject(temp, 0, 0, 726, 500);
 }
 
-int Card::getRank() {
+int CardComponent::getRank() {
     return rank;
 }
 
-int Card::getSuit() {
+int CardComponent::getSuit() {
     return suit;
 }
 
+void CardComponent::update()
+{}
 
 

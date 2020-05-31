@@ -2,11 +2,15 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "deck.h"
+#include "EntityManager.h"
 
 GameObject* cardOne = NULL;
 GameObject* cardTwo = NULL;
 GameObject* background = NULL;
 GameObject* startButton = NULL;
+
+EntityManager* entityManager = new EntityManager();
+Deck* deck = new Deck();
 
 int window_height = 720;
 int window_width = 1280;
@@ -55,12 +59,12 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	// Start Button
 	startButton = new GameObject("../assets/start.png", 0, 0, 150, 300);
 
-	Deck* deck = new Deck();
-	deck->shuffle();
-	hand = deck->deal();
-	cardOne = hand[0].cardObj;
-	cardTwo = hand[1].cardObj;
-	std::cout << hand[0].getRank() << hand[0].getSuit() << std::endl;
+	//Deck* deck = new Deck();
+	//deck->shuffle();
+	//hand = deck->deal();
+	//cardOne = hand[0].cardObj;
+	//cardTwo = hand[1].cardObj;
+	//std::cout << hand[0].getRank() << hand[0].getSuit() << std::endl;
 }
 
 void Game::handleEvents()

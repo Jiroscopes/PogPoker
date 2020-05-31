@@ -1,4 +1,4 @@
-#include "card.h"
+#include "Entity.h"
 #include <vector>
 #include <ctime>
 #include <iostream>
@@ -7,8 +7,9 @@ class Deck
 {
     public:
         static const int DECK_SIZE;
-		std::vector<Card> deck;
+		std::vector<Entity*> deck;
         Deck();
+		~Deck();
         void shuffle();
-        Card* deal();
+        Entity* deal();
 };
