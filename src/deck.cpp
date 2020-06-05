@@ -1,5 +1,6 @@
 #include "deck.h"
 #include "CardComponent.h"
+#include "GraphicsComponent.h"
 //#include "GameObject.h"
 
 const int Deck::DECK_SIZE = 52;
@@ -33,13 +34,15 @@ void Deck::shuffle()
 	}
 }
 
-Entity* Deck::deal()
+Entity** Deck::deal()
 {
 	// Move this to player at some point
-	Entity* hand[2];
+	Entity** hand = new Entity*[2];
 
 	if (!deck.empty()) {
 		hand[0] = deck.back();
+		std::string filename = "../assets/cards/";
+		hand[0]->addComponent();
 		deck.pop_back();
 
 		hand[1] = deck.back();
@@ -49,6 +52,6 @@ Entity* Deck::deal()
 		std::cout << "Deck is empty ??" << std::endl;
 	}
 
-	return *hand;
+	return hand;
 }
 

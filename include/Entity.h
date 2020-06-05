@@ -1,6 +1,7 @@
 #pragma once
-#include <vector>
 #include "Component.h"
+#include <vector>
+
 
 class Entity
 {
@@ -9,7 +10,9 @@ private:
 	int xPos;
 	int yPos;
 public:
-	template <class T> T addComponent(T* comp);
+	//template <class T> void addComponent(T comp);
+	void addComponent(Component* component);
+	template<typename T> T& getComponent(Entity* entity);
 	int getXPosition() { return xPos; }
 	int getYPosition() { return yPos; }
 	void setXPosition() {};

@@ -1,11 +1,13 @@
 #pragma once
 #include "Component.h"
+#include "Entity.h"
 #include "SDL.h"
 //#include "SDL_image.h"
 
 class GraphicsComponent : public Component
 {
 private:
+	Entity* owner;
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect; // src = texture, dest = size on screen
 public:

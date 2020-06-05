@@ -1,6 +1,7 @@
 #include "GraphicsComponent.h"
 #include "TextureManager.h"
 
+
 GraphicsComponent::GraphicsComponent(const char* textureSheet, Entity* entity, int h, int w)
 {
 	owner = entity;

@@ -1,3 +1,4 @@
+#pragma once
 #include "Entity.h"
 #include <vector>
 #include <ctime>
@@ -11,5 +12,5 @@ class Deck
         Deck();
 		~Deck();
         void shuffle();
-        Entity* deal();
+        Entity** deal();
 };
