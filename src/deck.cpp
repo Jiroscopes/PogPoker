@@ -13,6 +13,7 @@ Deck::Deck()
     for (int i=0; i<DECK_SIZE; i++) 
     {
 		Entity* newCard = new Entity();
+		std::cout << i << std::endl;
 		newCard->addComponent(new CardComponent(i));
 		deck.push_back(newCard);
     }
@@ -42,10 +43,16 @@ Entity** Deck::deal()
 	if (!deck.empty()) {
 		hand[0] = deck.back();
 		std::string filename = "../assets/cards/";
-		hand[0]->addComponent();
+		CardComponent* cardComp = hand[0]->getComponent<CardComponent*>(1);
+		filename.append(cardComp->getFilename());
+		hand[0]->addComponent(new GraphicsComponent(filename.c_str(), hand[0], 50, 50));
 		deck.pop_back();
 
 		hand[1] = deck.back();
+		std::string filename2 = "../assets/cards/";
+		CardComponent* cardComp2 = hand[1]->getComponent<CardComponent*>(1);
+		filename2.append(cardComp->getFilename());
+		hand[1]->addComponent(new GraphicsComponent(filename2.c_str(), hand[1], 50, 50));
 		deck.pop_back();
 	}
 	else {
