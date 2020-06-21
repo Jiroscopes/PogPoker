@@ -5,7 +5,7 @@
 #include "EntityManager.h"
 
 EntityManager* entityManager = new EntityManager();
-Deck* startingDeck = new Deck();
+Deck* startingDeck = nullptr;
 
 
 int window_height = 720;
@@ -47,7 +47,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
-
+	startingDeck = new Deck(entityManager);
 	startingDeck->shuffle();
 	Entity** hand = startingDeck->deal();
 
@@ -84,7 +84,7 @@ void Game::handleEvents()
 
 void Game::update()
 {
-
+	entityManager->update();
 }
 
 void Game::render()
@@ -92,7 +92,7 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
 	// This is where we would add stuff to render
-
+	entityManager->render();
 	SDL_RenderPresent(renderer);
 }
 

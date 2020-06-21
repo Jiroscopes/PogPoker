@@ -3,12 +3,13 @@
 #include <algorithm>
 
 
-void Entity::addComponent(Component* component)
-{
-	componentLoc.push_back(component->id);
-	std::cout << "Added ID: " << component->id << std::endl;
-	components.push_back(component);
-}
+//void Entity::addComponent(Component* component)
+//{
+//	componentLoc.push_back(component->id);
+//	std::cout << "Added ID: " << component->id << std::endl;
+//	components.push_back(component);
+//}
+
 
 void Entity::update()
 {
@@ -20,7 +21,10 @@ void Entity::update()
 
 void Entity::render()
 {
-	 
+	//for (Component* comp : components)
+	//{
+	//	comp->render();
+	//}
 }
 //
 //template <typename T>

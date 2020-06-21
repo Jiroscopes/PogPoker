@@ -1,6 +1,7 @@
 #include "deck.h"
 #include "CardComponent.h"
 #include "GraphicsComponent.h"
+#include "EntityManager.h"
 //#include "GameObject.h"
 
 const int Deck::DECK_SIZE = 52;
@@ -8,13 +9,13 @@ const int Deck::DECK_SIZE = 52;
 std::vector<Entity*> deck(Deck::DECK_SIZE);
 
 
-Deck::Deck()
+Deck::Deck(EntityManager* entityManager)
 {
     for (int i=0; i<DECK_SIZE; i++) 
     {
 		Entity* newCard = new Entity();
-		std::cout << i << std::endl;
-		newCard->addComponent(new CardComponent(i));
+		entityManager->addEntity(newCard);
+		newCard->addComponent<CardComponent*>(new CardComponent(i));
 		deck.push_back(newCard);
     }
 }
@@ -45,14 +46,14 @@ Entity** Deck::deal()
 		std::string filename = "../assets/cards/";
 		CardComponent* cardComp = hand[0]->getComponent<CardComponent*>(1);
 		filename.append(cardComp->getFilename());
-		hand[0]->addComponent(new GraphicsComponent(filename.c_str(), hand[0], 50, 50));
+		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename.c_str(), hand[0], 50, 50));
 		deck.pop_back();
 
 		hand[1] = deck.back();
 		std::string filename2 = "../assets/cards/";
 		CardComponent* cardComp2 = hand[1]->getComponent<CardComponent*>(1);
 		filename2.append(cardComp->getFilename());
-		hand[1]->addComponent(new GraphicsComponent(filename2.c_str(), hand[1], 50, 50));
+		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename2.c_str(), hand[1], 50, 50));
 		deck.pop_back();
 	}
 	else {

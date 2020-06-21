@@ -7,7 +7,7 @@ CardComponent::CardComponent(int cardNum)
 	rank = (cardNum % 13) + 1;
 	suit = cardNum / 13;
 
-	filename = cardNum + ".png";
+	filename = std::to_string(cardNum) + ".png";
 }
 
 int CardComponent::getRank() {

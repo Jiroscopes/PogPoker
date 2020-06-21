@@ -11,8 +11,13 @@ private:
 	int xPos;
 	int yPos;
 public:
-	//template <class T> void addComponent(T comp);
-	void addComponent(Component* component);
+	template <typename T>
+	void addComponent(T component)
+	{
+		componentLoc.push_back(component->id);
+		components.push_back(component);
+	}
+	//void addComponent(Component* component);
 
 	template<typename T> T getComponent(int id) {
 		std::vector<int>::iterator compID = std::find(componentLoc.begin(), componentLoc.end(), id);
@@ -22,7 +27,7 @@ public:
 			return 0;
 		}
 		int index = std::distance(componentLoc.begin(), compID);
-		std::cout << index << std::endl;
+		//std::cout << index << std::endl;
 		T temp = (T)components[index];
 		return temp; 
 	}
