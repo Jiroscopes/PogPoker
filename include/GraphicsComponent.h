@@ -16,5 +16,5 @@ public:
 	void setHeight(int h) { srcRect.h = h; }
 	void setWidth(int w) { srcRect.w = w; }
 	void update();
-	void render();
+	void render(SDL_Renderer* renderer);
 };

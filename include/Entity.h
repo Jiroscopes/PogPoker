@@ -1,15 +1,15 @@
 #pragma once
 #include "Component.h"
 #include <vector>
-
+#include "SDL.h"
 
 class Entity
 {
 private:
 	std::vector<Component*> components;
 	std::vector<int> componentLoc;
-	int xPos;
-	int yPos;
+	float xPos = 0;
+	float yPos = 0;
 public:
 	template <typename T>
 	void addComponent(T component)
@@ -17,7 +17,6 @@ public:
 		componentLoc.push_back(component->id);
 		components.push_back(component);
 	}
-	//void addComponent(Component* component);
 
 	template<typename T> T getComponent(int id) {
 		std::vector<int>::iterator compID = std::find(componentLoc.begin(), componentLoc.end(), id);
@@ -27,14 +26,13 @@ public:
 			return 0;
 		}
 		int index = std::distance(componentLoc.begin(), compID);
-		//std::cout << index << std::endl;
 		T temp = (T)components[index];
 		return temp; 
 	}
-	int getXPosition() { return xPos; }
-	int getYPosition() { return yPos; }
+	float getXPosition() { return xPos; }
+	float getYPosition() { return yPos; }
 	void setXPosition() {};
 	void setYPosition() {};
 	void update();
-	void render();
+	void render(SDL_Renderer* renderer);
 };

@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include <iostream>
 #include <algorithm>
-
+#include "GraphicsComponent.h"
 
 //void Entity::addComponent(Component* component)
 //{
@@ -19,12 +19,10 @@ void Entity::update()
 	}
 }
 
-void Entity::render()
+void Entity::render(SDL_Renderer* renderer)
 {
-	//for (Component* comp : components)
-	//{
-	//	comp->render();
-	//}
+	GraphicsComponent* gfx = this->getComponent<GraphicsComponent*>(1);
+	gfx->render(renderer);
 }
 //
 //template <typename T>

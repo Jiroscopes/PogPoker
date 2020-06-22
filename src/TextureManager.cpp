@@ -15,6 +15,6 @@ SDL_Texture* TextureManager::LoadTexture(const char* texture)
 		//std::cout << "Here" << std::endl;
 		std::cout << SDL_GetError() << std::endl;
 	}
-
+	std::cout << "Texture Loaded" << texture << std::endl;
 	return tex;
 }

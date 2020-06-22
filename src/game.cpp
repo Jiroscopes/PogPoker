@@ -38,17 +38,17 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer)
 		{
-			SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			std::cout << "Renderer created!" << std::endl;
 		}
-
 		isRunning = true;
 	}
 	else {
 		isRunning = false;
 	}
+
 	startingDeck = new Deck(entityManager);
-	startingDeck->shuffle();
+	//startingDeck->shuffle();
 	Entity** hand = startingDeck->deal();
 
 }
@@ -74,6 +74,7 @@ void Game::handleEvents()
 			}
 			break;
 		case SDL_QUIT:
+			clean();
 			isRunning = false;
 			break;
 		default:
@@ -91,8 +92,8 @@ void Game::render()
 {
 	SDL_RenderClear(renderer);
 	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
-	// This is where we would add stuff to render
-	entityManager->render();
+	// add to render
+	entityManager->render(renderer);
 	SDL_RenderPresent(renderer);
 }
 

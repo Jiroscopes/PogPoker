@@ -4,7 +4,7 @@
 
 void EntityManager::addEntity(Entity* entity)
 {
-	std::cout << "Added" << std::endl;
+	//std::cout << "Added" << std::endl;
 	entities.push_back(entity);
 }
 
@@ -13,12 +13,12 @@ Entity* EntityManager::getEntity(int id)
 	return entities[id];
 }
 
-void EntityManager::render()
+void EntityManager::render(SDL_Renderer* rendererRef)
 {
 	for (Entity* ent : entities)
 	{	
-		//std::cout << ent->getComponent<CardComponent*>(1)->getFilename() << std::endl;
-		ent->render();
+		//std::cout << "Updating: " << ent->getComponent<CardComponent*>(1)->getFilename() << std::endl;
+		ent->render(rendererRef);
 	}
 }
 

@@ -7,10 +7,12 @@
 
 class Deck
 {
+	private:
+		EntityManager* entityManager;
     public:
         static const int DECK_SIZE;
 		std::vector<Entity*> deck;
-        Deck(EntityManager* entityManager);
+		Deck(EntityManager* entMan);
 		~Deck();
         void shuffle();
         Entity** deal();
