@@ -11,10 +11,11 @@ private:
 	SDL_Texture* objTexture;
 	SDL_Rect srcRect, destRect; // src = texture, dest = size on screen
 public:
+	int id = 2;
 	GraphicsComponent(const char* textureSheet, Entity* entity, int h, int w);
 	~GraphicsComponent();
 	void setHeight(int h) { srcRect.h = h; }
 	void setWidth(int w) { srcRect.w = w; }
 	void update();
-	void render(SDL_Renderer* renderer);
+	void render();
 };

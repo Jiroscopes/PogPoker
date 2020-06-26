@@ -13,12 +13,12 @@ Entity* EntityManager::getEntity(int id)
 	return entities[id];
 }
 
-void EntityManager::render(SDL_Renderer* rendererRef)
+void EntityManager::render()
 {
 	for (Entity* ent : entities)
 	{	
 		//std::cout << "Updating: " << ent->getComponent<CardComponent*>(1)->getFilename() << std::endl;
-		ent->render(rendererRef);
+		ent->render();
 	}
 }
 

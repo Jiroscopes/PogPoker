@@ -29,10 +29,11 @@ public:
 		T temp = (T)components[index];
 		return temp; 
 	}
+
 	float getXPosition() { return xPos; }
 	float getYPosition() { return yPos; }
 	void setXPosition() {};
 	void setYPosition() {};
 	void update();
-	void render(SDL_Renderer* renderer);
+	void render();
 };

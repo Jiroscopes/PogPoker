@@ -45,7 +45,7 @@ Entity** Deck::deal()
 		std::string filename = "../assets/cards/";
 		CardComponent* cardComp = hand[0]->getComponent<CardComponent*>(1);
 		filename.append(cardComp->getFilename());
-		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename.c_str(), hand[0], 200, 200));
+		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename.c_str(), hand[0], 500, 726));
 		entityManager->addEntity(hand[0]);
 		deck.pop_back();
 
@@ -53,7 +53,7 @@ Entity** Deck::deal()
 		std::string filename2 = "../assets/cards/";
 		CardComponent* cardComp2 = hand[1]->getComponent<CardComponent*>(1);
 		filename2.append(cardComp2->getFilename());
-		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename2.c_str(), hand[1], 200, 200));
+		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename2.c_str(), hand[1], 500, 726));
 		entityManager->addEntity(hand[1]);
 		deck.pop_back();
 	}

@@ -19,10 +19,11 @@ void Entity::update()
 	}
 }
 
-void Entity::render(SDL_Renderer* renderer)
+void Entity::render()
 {
-	GraphicsComponent* gfx = this->getComponent<GraphicsComponent*>(1);
-	gfx->render(renderer);
+	GraphicsComponent* gfx = this->getComponent<GraphicsComponent*>(2);
+	//std::cout << gfx->id << std::endl;
+	gfx->render();
 }
 //
 //template <typename T>

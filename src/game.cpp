@@ -93,7 +93,7 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
 	// add to render
-	entityManager->render(renderer);
+	entityManager->render();
 	SDL_RenderPresent(renderer);
 }
 
