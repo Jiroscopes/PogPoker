@@ -144,10 +144,12 @@
     <ClInclude Include="..\include\game.h" />
     <ClInclude Include="..\include\GameObject.h" />
     <ClInclude Include="..\include\GraphicsComponent.h" />
+    <ClInclude Include="..\include\map.h" />
     <ClInclude Include="..\include\PositionComponent.h" />
     <ClInclude Include="..\include\Renderer.h" />
     <ClInclude Include="..\include\SpriteComponent.h" />
     <ClInclude Include="..\include\TextureManager.h" />
+    <ClInclude Include="..\include\tile.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\CardComponent.cpp" />
@@ -158,9 +160,11 @@
     <ClCompile Include="..\src\GameObject.cpp" />
     <ClCompile Include="..\src\GraphicsComponent.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\map.cpp" />
     <ClCompile Include="..\src\PositionComponent.cpp" />
     <ClCompile Include="..\src\Renderer.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
+    <ClCompile Include="..\src\tile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Image.png" />

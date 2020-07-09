@@ -25,6 +25,9 @@
     <Filter Include="Header Files\ECS">
       <UniqueIdentifier>{81305d1e-f666-498f-9657-910c6726293d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Map">
+      <UniqueIdentifier>{f93334ef-b883-499d-9740-e21ef2bf11eb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\deck.h">
@@ -63,6 +66,12 @@
     <ClInclude Include="..\include\Component.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\map.h">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\tile.h">
+      <Filter>Header Files\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\deck.cpp">
@@ -97,6 +106,12 @@
     </ClCompile>
     <ClCompile Include="..\src\Entity.cpp">
       <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tile.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
