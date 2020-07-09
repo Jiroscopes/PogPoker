@@ -4,8 +4,8 @@
 class Tile
 {
 private:
-	const int TILE_WIDTH = 32;
-	const int TILE_HEIGHT = 32;
+	const int TILE_WIDTH = 80;
+	const int TILE_HEIGHT = 80;
 	SDL_Rect mBox;
 	int mType;
 public:
