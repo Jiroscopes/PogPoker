@@ -15,6 +15,8 @@ int window_width = 1280;
 
 SDL_Renderer* Game::renderer = nullptr;
 
+SDL_Rect cursor;
+
 Game::Game()
 {}
 
@@ -52,12 +54,13 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	//startingDeck = new Deck(entityManager);
 	//startingDeck->shuffle();
 	//Entity** hand = startingDeck->deal();
-
 }
 
 void Game::handleEvents()
 {
 	SDL_Event event;
+	cursor.h = 80;
+	cursor.w = 80;
 
 	while (SDL_PollEvent(&event)) {
 		switch (event.type)
@@ -74,6 +77,12 @@ void Game::handleEvents()
 			default:
 				break;
 			}
+			break;
+		case SDL_MOUSEMOTION:
+			cursor.x = event.motion.x;
+			cursor.y = event.motion.y;
+			std::cout << event.motion.x/80 << std::endl;
+			//std::cout << event.motion.y << std::endl;
 			break;
 		case SDL_QUIT:
 			clean();
@@ -96,6 +105,9 @@ void Game::render()
 	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
 	// add to render
 	map->draw();
+	//SDL_SetRenderDrawColor(renderer, 0, 175, 175, 255);
+	//SDL_RenderFillRect(renderer, &cursor);
+	//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 	entityManager->render();
 	SDL_RenderPresent(renderer);
 }
