@@ -115,8 +115,8 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Image.png">
+    <None Include="..\assets\main.map">
       <Filter>Resource Files</Filter>
-    </Image>
+    </None>
   </ItemGroup>
 </Project>

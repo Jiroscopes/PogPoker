@@ -7,7 +7,7 @@
 
 EntityManager* entityManager = new EntityManager();
 Deck* startingDeck = nullptr;
-Map* map = new Map(1280, 720);
+Map* map = nullptr;
 
 
 int window_height = 720;
@@ -51,6 +51,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
+	map = new Map(1280, 720);
 	//startingDeck = new Deck(entityManager);
 	//startingDeck->shuffle();
 	//Entity** hand = startingDeck->deal();
@@ -81,8 +82,6 @@ void Game::handleEvents()
 		case SDL_MOUSEMOTION:
 			cursor.x = event.motion.x;
 			cursor.y = event.motion.y;
-			std::cout << event.motion.x/80 << std::endl;
-			//std::cout << event.motion.y << std::endl;
 			break;
 		case SDL_QUIT:
 			clean();

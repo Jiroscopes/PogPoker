@@ -4,18 +4,19 @@
 SDL_Texture* TextureManager::LoadTexture(const char* texture)
 {
 	// Textures are handled on the GPU. Surfaces on the CPU
-	//std::cout << texture << std::endl;
 	SDL_Surface* tempSurface = IMG_Load(texture);
 	SDL_Texture* tex = SDL_CreateTextureFromSurface(Game::renderer, tempSurface);
-
+	if (tex == NULL)
+	{
+		fprintf(stderr, "CreateTextureFromSurface failed: %s\n", SDL_GetError());
+	}
+	//std::cout << "Texture Addr: " << tempSurface << std::endl;
 	// Free the memory and CPU 
 	SDL_FreeSurface(tempSurface);
 
 	if (tempSurface == nullptr)
 	{
-		//std::cout << "Here" << std::endl;
 		std::cout << SDL_GetError() << std::endl;
 	}
-	std::cout << "Texture Loaded" << texture << std::endl;
 	return tex;
 }

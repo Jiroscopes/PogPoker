@@ -167,7 +167,7 @@
     <ClCompile Include="..\src\tile.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Image.png" />
+    <None Include="..\assets\main.map" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
