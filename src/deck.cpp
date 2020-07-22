@@ -3,6 +3,7 @@
 #include "GraphicsComponent.h"
 #include "EntityManager.h"
 #include "PhysicsComponent.h"
+#include "EventComponent.h"
 
 const int Deck::DECK_SIZE = 52;
 
@@ -46,6 +47,9 @@ Entity** Deck::deal()
 		std::string filename = "../assets/cards/";
 		CardComponent* cardComp = hand[0]->getComponent<CardComponent*>(1);
 		filename.append(cardComp->getFilename());
+
+		std::vector<MouseEvent> events{ MouseMotion, MouseDown };
+		hand[0]->addComponent<EventComponent*>(new EventComponent(events));
 		hand[0]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[0], { 5*80, 8*80 }, { 240, 320 }));
 		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename.c_str(), hand[0]));
 		entityManager->addEntity(hand[0]);

@@ -9,25 +9,14 @@ struct MousePosition{
 	int y;
 };
 
-enum MouseEvent {
-	MouseEnter,
-	MouseLeave,
-	MouseDown,
-	MouseUp
-}MouseEvent;
-
 class EventManager
 {
 private:
-	std::vector<EventComponent*> mouseEnter;
-	std::vector<EventComponent*> mouseLeave;
+	std::vector<EventComponent*> mouseMotion;
 	std::vector<EventComponent*> mouseDown;
 	std::vector<EventComponent*> mouseUp;
 public:
 	EventManager();
-	void addMouseEnterEvent();
-	void addMouseLeaveEvent();
-	void addMouseDownEvent();
-	void addMouseUpEvent();
-	void update();
+	void registerEvent(EventComponent* eventHandler, MouseEvent eventType);
+	void update(SDL_Event* event);
 };

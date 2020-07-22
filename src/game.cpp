@@ -14,11 +14,13 @@ int window_height = 720;
 int window_width = 1280;
 
 SDL_Renderer* Game::renderer = nullptr;
+EventManager* Game::eventManager = nullptr;
 
 SDL_Rect cursor;
 
 Game::Game()
-{}
+{
+}
 
 Game::~Game()
 {}
@@ -50,7 +52,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
-
+	eventManager = new EventManager();
 	map = new Map(window_width, window_height);
 	table = new Table();
 	startingDeck = new Deck(entityManager);
@@ -80,7 +82,10 @@ void Game::handleEvents()
 				break;
 			}
 			break;
+		case SDL_MOUSEBUTTONDOWN:
+		case SDL_MOUSEBUTTONUP:
 		case SDL_MOUSEMOTION:
+			eventManager->update(&event);
 			cursor.x = event.motion.x;
 			cursor.y = event.motion.y;
 			break;
