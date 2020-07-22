@@ -12,6 +12,6 @@ private:
 	SDL_Texture* mMap;
 public:
 	Map(int width, int height);
-	bool setTiles(Tile* tiles[], void* mapPTR);
+	bool setTiles(Tile* tiles[]);
 	void draw();
 };

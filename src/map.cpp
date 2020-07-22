@@ -11,8 +11,8 @@ Map::Map(int width, int height)
 	const char* path = "../assets/map-tileset.png";
 
 	mMap = TextureManager::LoadTexture(path);
-	std::cout << "Map load:" << mMap << std::endl;
-	if (setTiles(tileSet, mMap))
+
+	if (setTiles(tileSet))
 	{
 		printf("Map loaded!\n");
 	}
@@ -21,7 +21,7 @@ Map::Map(int width, int height)
 	}
 }
 
-bool Map::setTiles(Tile* tiles[], void* mapPTR)
+bool Map::setTiles(Tile* tiles[])
 {
 
 	bool tilesLoaded = true;
@@ -86,12 +86,11 @@ bool Map::setTiles(Tile* tiles[], void* mapPTR)
 void Map::draw()
 {
 	int i;
-	//SDL_Rect renderQuad = { 80, 0, 80, 80 };
+
 	SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
-	//std::cout << tileSet[0]->getBox().w << std::endl;
+
 	for (i = 0; i < TOTAL_TILES; i++)
 	{
-		//SDL_RenderCopy(Game::renderer, mMap, &renderQuad, &tileSet[i]->getBox());
 		tileSet[i]->render();
 	}
 	SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 0);

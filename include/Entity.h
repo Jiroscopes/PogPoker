@@ -11,6 +11,9 @@ private:
 	float xPos = 0;
 	float yPos = 0;
 public:
+
+	Entity(int xPos, int yPos);
+
 	template <typename T>
 	void addComponent(T component)
 	{

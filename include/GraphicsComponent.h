@@ -2,20 +2,22 @@
 #include "Component.h"
 #include "Entity.h"
 #include "SDL.h"
-//#include "SDL_image.h"
+#include "PhysicsComponent.h"
+
 
 class GraphicsComponent : public Component
 {
 private:
 	Entity* owner;
 	SDL_Texture* objTexture;
-	SDL_Rect srcRect, destRect; // src = texture, dest = size on screen
+	SDL_Rect mBox, tBox; // src = texture, dest = size on screen
+	PhysicsComponent* mEntityPhysics;
 public:
 	int id = 2;
-	GraphicsComponent(const char* textureSheet, Entity* entity, int h, int w);
+	GraphicsComponent(const char* textureSheet, Entity* entity);
 	~GraphicsComponent();
-	void setHeight(int h) { srcRect.h = h; }
-	void setWidth(int w) { srcRect.w = w; }
+	void setHeight(int h) { mBox.h = h; }
+	void setWidth(int w) { mBox.w = w; }
 	void update();
 	void render();
 };

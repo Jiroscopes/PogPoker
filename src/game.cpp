@@ -1,14 +1,14 @@
 #include "game.h"
 #include "TextureManager.h"
-#include "GameObject.h"
 #include "deck.h"
 #include "map.h"
 #include "EntityManager.h"
+#include "table.h"
 
 EntityManager* entityManager = new EntityManager();
 Deck* startingDeck = nullptr;
 Map* map = nullptr;
-
+Table* table = nullptr;
 
 int window_height = 720;
 int window_width = 1280;
@@ -51,10 +51,11 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 
-	map = new Map(1280, 720);
-	//startingDeck = new Deck(entityManager);
-	//startingDeck->shuffle();
-	//Entity** hand = startingDeck->deal();
+	map = new Map(window_width, window_height);
+	table = new Table();
+	startingDeck = new Deck(entityManager);
+	startingDeck->shuffle();
+	Entity** hand = startingDeck->deal();
 }
 
 void Game::handleEvents()
@@ -104,9 +105,7 @@ void Game::render()
 	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
 	// add to render
 	map->draw();
-	//SDL_SetRenderDrawColor(renderer, 0, 175, 175, 255);
-	//SDL_RenderFillRect(renderer, &cursor);
-	//SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+	table->render();
 	entityManager->render();
 	SDL_RenderPresent(renderer);
 }

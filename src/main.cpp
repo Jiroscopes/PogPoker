@@ -14,7 +14,6 @@ int main()
 	game = new Game();
 	game->init("PogPoker", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, false);
 	int frames = 0;
-	//double previous = SDL_GetTicks();
 
 	while (game->running()) {
 
@@ -37,7 +36,6 @@ int main()
 			SDL_Delay(FRAME_DELAY - frameTime);
 		}
 
-		//std::cout << 1 / ((SDL_GetTicks() - frameStart) / 1000.f) << std::endl;
 	}
 
 	game->clean();
