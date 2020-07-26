@@ -1,5 +1,4 @@
 #include "EntityManager.h"
-#include "CardComponent.h"
 #include <iostream>
 
 void EntityManager::addEntity(Entity* entity)

@@ -8,11 +8,10 @@ class Entity
 private:
 	std::vector<Component*> components;
 	std::vector<int> componentLoc;
-	float xPos = 0;
-	float yPos = 0;
+	//float xPos = 0;
+	//float yPos = 0;
 public:
-
-	Entity(int xPos, int yPos);
+	Entity();
 
 	template <typename T>
 	void addComponent(T component)
@@ -33,10 +32,11 @@ public:
 		return temp; 
 	}
 
-	float getXPosition() { return xPos; }
-	float getYPosition() { return yPos; }
-	void setXPosition() {};
-	void setYPosition() {};
+	//float getXPosition() { return xPos; }
+	//float getYPosition() { return yPos; }
+	//void setXPosition() {};
+	//void setYPosition() {};
+	virtual void triggerEvent(int eventType) = 0;
 	void update();
 	void render();
 };

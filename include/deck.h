@@ -1,8 +1,9 @@
 #pragma once
 #include "Entity.h"
+#include "Card.h"
+#include "EntityManager.h"
 #include <vector>
 #include <ctime>
-#include "EntityManager.h"
 #include <iostream>
 
 class Deck
@@ -11,9 +12,9 @@ class Deck
 		EntityManager* entityManager;
     public:
         static const int DECK_SIZE;
-		std::vector<Entity*> deck;
+		std::vector<Card*> deck;
 		Deck(EntityManager* entMan);
 		~Deck();
         void shuffle();
-        Entity** deal();
+        Card** deal();
 };

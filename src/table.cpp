@@ -2,7 +2,7 @@
 #include "game.h"
 Table::Table()
 {
-	texture = TextureManager::LoadTexture("../assets/table-2.png");
+	texture = TextureManager::LoadTexture("../assets/table-3.png");
 	mBox.x = 80;
 	mBox.y = 80;
 	mBox.w = 1120;

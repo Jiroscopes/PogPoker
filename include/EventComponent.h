@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+#include "Entity.h"
 #include <vector>
 
 enum MouseEvent {
@@ -12,9 +13,10 @@ class EventComponent : public Component
 {
 private:
 	MouseEvent eventType;
+	Entity* owner;
 public:
 	int id = 4;
-	EventComponent(std::vector<MouseEvent> mouseEvents);
+	EventComponent(Entity* owner, std::vector<MouseEvent> mouseEvents);
 	void triggerEvent(MouseEvent eventType);
 	void update() {}
 };

@@ -3,8 +3,10 @@
 #include "game.h"
 #include <iostream>
 
-EventComponent::EventComponent(std::vector<MouseEvent> mouseEvents)
+EventComponent::EventComponent(Entity* owner, std::vector<MouseEvent> mouseEvents)
 {
+	this->owner = owner;
+
 	for (MouseEvent eventType : mouseEvents)
 	{
 		switch (eventType)
@@ -24,5 +26,5 @@ EventComponent::EventComponent(std::vector<MouseEvent> mouseEvents)
 
 void EventComponent::triggerEvent(MouseEvent eventType)
 {
-	std::cout << eventType << std::endl;
+	owner->triggerEvent(eventType);
 }

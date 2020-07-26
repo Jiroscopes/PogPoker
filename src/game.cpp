@@ -57,7 +57,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	table = new Table();
 	startingDeck = new Deck(entityManager);
 	startingDeck->shuffle();
-	Entity** hand = startingDeck->deal();
+	Card** hand = startingDeck->deal();
 }
 
 void Game::handleEvents()

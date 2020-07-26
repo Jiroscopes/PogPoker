@@ -1,21 +1,20 @@
 #include "deck.h"
-#include "CardComponent.h"
+#include "Card.h"
+
 #include "GraphicsComponent.h"
-#include "EntityManager.h"
 #include "PhysicsComponent.h"
 #include "EventComponent.h"
 
 const int Deck::DECK_SIZE = 52;
 
-std::vector<Entity*> deck(Deck::DECK_SIZE);
+std::vector<Card*> deck(Deck::DECK_SIZE);
 
 
 Deck::Deck(EntityManager* entMan) : entityManager(entMan)
 {
     for (int i=0; i<DECK_SIZE; i++) 
     {
-		Entity* newCard = new Entity(0, 0);
-		newCard->addComponent<CardComponent*>(new CardComponent(i));
+		Card* newCard = new Card(i);
 		deck.push_back(newCard);
     }
 }
@@ -36,32 +35,35 @@ void Deck::shuffle()
 	}
 }
 
-Entity** Deck::deal()
+Card** Deck::deal()
 {
 	// Move this to player at some point
-	Entity** hand = new Entity*[2];
+	Card** hand = new Card*[2];
 
 	if (!deck.empty()) {
 		
 		hand[0] = deck.back();
-		std::string filename = "../assets/cards/";
-		CardComponent* cardComp = hand[0]->getComponent<CardComponent*>(1);
-		filename.append(cardComp->getFilename());
 
 		std::vector<MouseEvent> events{ MouseMotion, MouseDown };
-		hand[0]->addComponent<EventComponent*>(new EventComponent(events));
-		hand[0]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[0], { 5*80, 8*80 }, { 240, 320 }));
-		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename.c_str(), hand[0]));
+
+		// Add the components to the Card
+		hand[0]->addComponent<EventComponent*>(new EventComponent(hand[0], events));
+		hand[0]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[0], { 5*80, 7*80 }, { 240, 320 }));
+		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[0]->getFilename().c_str(), hand[0]));
+
+		// Add the card to our entity manager so that it can handle the rest.
 		entityManager->addEntity(hand[0]);
+
+		// Remove the card from the deck
 		deck.pop_back();
 
 		hand[1] = deck.back();
-		std::string filename2 = "../assets/cards/";
-		CardComponent* cardComp2 = hand[1]->getComponent<CardComponent*>(1);
-		filename2.append(cardComp2->getFilename());
-		hand[1]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[1], { 8*80, 8*80}, { 240, 320 }));
-		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(filename2.c_str(), hand[1]));
+
+		hand[1]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[1], { 8*80, 7*80}, { 240, 320 }));
+		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[1]->getFilename().c_str(), hand[1]));
+
 		entityManager->addEntity(hand[1]);
+
 		deck.pop_back();
 	}
 	else {

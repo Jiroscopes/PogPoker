@@ -3,10 +3,8 @@
 #include <algorithm>
 #include "GraphicsComponent.h"
 
-Entity::Entity(int x, int y)
+Entity::Entity()
 {
-	xPos = x;
-	yPos = y;
 }
 
 void Entity::update()

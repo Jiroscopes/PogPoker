@@ -136,7 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\include\CardComponent.h" />
+    <ClInclude Include="..\include\Card.h" />
     <ClInclude Include="..\include\Component.h" />
     <ClInclude Include="..\include\deck.h" />
     <ClInclude Include="..\include\Entity.h" />
@@ -153,7 +153,7 @@
     <ClInclude Include="..\include\tile.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\CardComponent.cpp" />
+    <ClCompile Include="..\src\Card.cpp" />
     <ClCompile Include="..\src\deck.cpp" />
     <ClCompile Include="..\src\Entity.cpp" />
     <ClCompile Include="..\src\EntityManager.cpp" />
