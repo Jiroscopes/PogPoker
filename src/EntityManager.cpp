@@ -16,7 +16,7 @@ void EntityManager::render()
 {
 	for (Entity* ent : entities)
 	{	
-		//std::cout << "Updating: " << ent->getComponent<CardComponent*>(1)->getFilename() << std::endl;
+		
 		ent->render();
 	}
 }

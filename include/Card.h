@@ -8,6 +8,8 @@ private:
 	int cardNum;
 	int suit;
 	int rank;
+	bool mouseInside = false;
+	int animationSpeed = 10;
 	std::string filename = "../assets/cards/";
 public:
 	int id = 1;
@@ -16,6 +18,9 @@ public:
 	int getSuit();
 	int getCardNum();
 	std::string getFilename();
+	int getAnimationSpeed() {
+		return animationSpeed;
+	}
 	void update();
 	void triggerEvent(int eventType);
 };
