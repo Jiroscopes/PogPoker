@@ -48,7 +48,8 @@ void Card::triggerEvent(int eventType)
 			if (!mouseInside)
 			{
 				mouseInside = true;
-				physComponent->setNewPosition({ currentPos.x, (currentPos.y - 40) }); // speed is frames per tick, ie 10 is 10 units moved in 1 tick
+				std::cout << "TRYING TO MOVE" << std::endl;
+				physComponent->setNewPosition({ currentPos.x, (currentPos.y - 160) }); // speed is frames per tick, ie 10 is 10 units moved in 1 tick
 			}
 		}
 		else
@@ -56,7 +57,7 @@ void Card::triggerEvent(int eventType)
 			// If it was inside, but no longer is reset the position
 			if (mouseInside) {
 				mouseInside = false;
-				physComponent->setNewPosition({ currentPos.x, (currentPos.y + 40) });
+				physComponent->setNewPosition({ currentPos.x, (currentPos.y + 160) });
 			}
 		}
 	}

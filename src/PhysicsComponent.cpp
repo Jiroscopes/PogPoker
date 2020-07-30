@@ -1,4 +1,5 @@
 #include "PhysicsComponent.h"
+#include <iostream>
 
 PhysicsComponent::PhysicsComponent(Entity* owner, Position pos, Size size)
 {
@@ -28,7 +29,7 @@ void PhysicsComponent::updatePosition()
 			mPos.y++;
 		}
 		else {
-			mPos.y = mPos.y - 1 * 2;
+			mPos.y = mPos.y - 1;
 		}
 	}
 }
@@ -38,6 +39,26 @@ void PhysicsComponent::setNewPosition(Position pos)
 	mNewPosition = pos;
 }
 
+void PhysicsComponent::setBoundary(Boundary boundary)
+{
+	mBoundary = boundary;
+}
+
+bool PhysicsComponent::checkBoundary()
+{
+	//
+
+	if (mPos.x >= mBoundary.leftX && (mPos.x + mSize.width) <= mBoundary.rightX && mPos.y >= mBoundary.topY && (mPos.y + mSize.height) <= mBoundary.bottomY)
+	{
+		return true;
+	}
+	else {
+		//std::cout << "OUT OF BOUNDS! SIZE: " << mPos.x << std::endl;
+		return false;
+	}
+}
+
+
 void PhysicsComponent::setNewSize(Size size)
 {
 	mNewSize = size;
@@ -45,6 +66,8 @@ void PhysicsComponent::setNewSize(Size size)
 
 void PhysicsComponent::update()
 {
-	this->updatePosition();
+	if (this->checkBoundary()) {
+		this->updatePosition();
+	}
 	//updateSize();
 }

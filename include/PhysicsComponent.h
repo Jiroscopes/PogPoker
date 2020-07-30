@@ -12,14 +12,24 @@ struct Size {
 	int height;
 };
 
+struct Boundary {
+	int leftX;
+	int rightX;
+	int topY;
+	int bottomY;
+
+};
+
 class PhysicsComponent : public Component
 {
 private:
 	Entity* owner;
 	Position mPos;
 	Position mNewPosition;
+	Boundary mBoundary;
 	Size mNewSize;
 	Size mSize;
+
 
 public:
 	int id = 3;
@@ -29,5 +39,7 @@ public:
 	Position* getPosition() { return &mPos; }
 	Size* getSize() { return &mSize; }
 	void setNewPosition(Position pos);
+	void setBoundary(Boundary boundary);
+	bool checkBoundary();
 	void setNewSize(Size size);
 };
