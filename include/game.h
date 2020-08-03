@@ -4,6 +4,7 @@
 #include "SDL.h"
 #include "SDL_image.h"
 #include "EventManager.h"
+#include "Easing.h"
 
 #undef main
 
@@ -28,4 +29,5 @@ public:
 	bool running();
 	static SDL_Renderer* renderer;
 	static EventManager* eventManager;
+	static Easing* easingMan;
 };

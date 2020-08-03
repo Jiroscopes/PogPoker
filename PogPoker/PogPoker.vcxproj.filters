@@ -78,6 +78,9 @@
     <ClInclude Include="..\include\Card.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\Easing.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\deck.cpp">
@@ -120,6 +123,9 @@
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\src\Card.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\Easing.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

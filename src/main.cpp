@@ -25,8 +25,6 @@ int main()
 		game->update();
 
 		game->render();
-		//for (int i = 0; i < 100000000; i++);
-
 
 		//How long it took to do all operations in one iteration
 		frameTime = SDL_GetTicks() - frameStart;

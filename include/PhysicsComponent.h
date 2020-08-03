@@ -12,34 +12,32 @@ struct Size {
 	int height;
 };
 
-struct Boundary {
-	int leftX;
-	int rightX;
-	int topY;
-	int bottomY;
-
-};
-
 class PhysicsComponent : public Component
 {
 private:
 	Entity* owner;
 	Position mPos;
 	Position mNewPosition;
-	Boundary mBoundary;
+	Position homePosition;
+	float testTime = 2;
 	Size mNewSize;
 	Size mSize;
-
+	float animationSpeed;
 
 public:
+	
 	int id = 3;
+
 	PhysicsComponent(Entity* owner, Position pos, Size size);
-	void updatePosition();
 	void update();
+
+	void setSpeed(float speed);
+
+	Position getHomePosition();
 	Position* getPosition() { return &mPos; }
-	Size* getSize() { return &mSize; }
+	void updatePosition();
 	void setNewPosition(Position pos);
-	void setBoundary(Boundary boundary);
-	bool checkBoundary();
+
 	void setNewSize(Size size);
+	Size* getSize() { return &mSize; }
 };

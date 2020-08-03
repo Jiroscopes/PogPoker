@@ -50,7 +50,7 @@ Card** Deck::deal()
 		hand[0]->addComponent<EventComponent*>(new EventComponent(hand[0], events));
 
 		PhysicsComponent* firstHandCardPhysics = new PhysicsComponent(hand[0], { 5 * 80, 7 * 80 }, { 240, 320 });
-		firstHandCardPhysics->setBoundary({ 5*80, 8*80, 5*80, 12*80});
+		
 		hand[0]->addComponent<PhysicsComponent*>(firstHandCardPhysics);
 		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[0]->getFilename().c_str(), hand[0]));
 
@@ -58,16 +58,16 @@ Card** Deck::deal()
 		entityManager->addEntity(hand[0]);
 
 		// Remove the card from the deck
-		//deck.pop_back();
+		deck.pop_back();
 
-		//hand[1] = deck.back();
+		hand[1] = deck.back();
 
-		//hand[1]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[1], { 8*80, 7*80}, { 240, 320 }));
-		//hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[1]->getFilename().c_str(), hand[1]));
+		hand[1]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[1], { 8*80, 7*80}, { 240, 320 }));
+		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[1]->getFilename().c_str(), hand[1]));
 
-		//entityManager->addEntity(hand[1]);
+		entityManager->addEntity(hand[1]);
 
-		//deck.pop_back();
+		deck.pop_back();
 	}
 	else {
 		std::cout << "Deck is empty ??" << std::endl;

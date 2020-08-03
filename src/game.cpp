@@ -10,11 +10,13 @@ Deck* startingDeck = nullptr;
 Map* map = nullptr;
 Table* table = nullptr;
 
+
 int window_height = 720;
 int window_width = 1280;
 
 SDL_Renderer* Game::renderer = nullptr;
 EventManager* Game::eventManager = nullptr;
+Easing* Game::easingMan = nullptr;
 
 SDL_Rect cursor;
 
@@ -53,6 +55,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 	eventManager = new EventManager();
+	easingMan = new Easing();
 	map = new Map(window_width, window_height);
 	table = new Table();
 	startingDeck = new Deck(entityManager);
@@ -102,6 +105,7 @@ void Game::handleEvents()
 void Game::update()
 {
 	entityManager->update();
+	easingMan->update();
 }
 
 void Game::render()
