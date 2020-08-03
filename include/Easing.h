@@ -18,5 +18,7 @@ public:
 	void setSpeed(float s);
 	float getSpeed();
 
-	float easeOut(float time, int start, int end, float totalTime); // totalTime  == speed???
+	float easeOut(float ntime, float start, float end, float totalTime);
+
+	float easeOut(float totalTime) {} // totalTime  == speed???
 };

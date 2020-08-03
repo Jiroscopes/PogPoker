@@ -47,7 +47,7 @@ void Card::triggerEvent(int eventType)
 		SDL_GetMouseState(&x, &y);
 
 		if ((x >= currentPos.x && x <= (currentPos.x + currentSize.width)) && (y >= currentPos.y && y <= (currentPos.y + currentSize.height))) {
-			std::cout << "INSIDE" << std::endl;
+			//std::cout << "INSIDE" << std::endl;
 
 			// If the mouse was not already inside when the move event was detected
 			if (!mouseInside)

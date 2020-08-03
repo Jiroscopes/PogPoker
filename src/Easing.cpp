@@ -1,4 +1,5 @@
 #include "Easing.h"
+#include <iostream>
 
 Easing::Easing()
 {
@@ -26,9 +27,9 @@ float Easing::getSpeed()
 	return speed;
 }
 
-float Easing::easeOut(float time, int start, int end, float totalTime)
+float Easing::easeOut(float ntime, float start, float end, float totalTime)
 {
-	return -end * (time /= totalTime) * (time - 2) + start;
+	return -end * (ntime /= totalTime) * (ntime - 2) + start;
 }
 
 void Easing::update()

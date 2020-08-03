@@ -1,6 +1,7 @@
 #include "PhysicsComponent.h"
 #include "game.h"
 #include <iostream>
+#include <cmath>
 
 // Position equality comparisons
 bool operator == (const Position& lhs, const Position& rhs)
@@ -16,6 +17,12 @@ PhysicsComponent::PhysicsComponent(Entity* owner, Position pos, Size size)
 	mNewPosition = pos;
 	homePosition = pos;
 	//mNewPosition = size;
+	clock = new Timer();
+}
+
+PhysicsComponent::~PhysicsComponent()
+{
+	delete clock;
 }
 
 void PhysicsComponent::updatePosition()
@@ -23,14 +30,7 @@ void PhysicsComponent::updatePosition()
 	if (mPos.x != mNewPosition.x) {
 		if (mNewPosition.x > mPos.x)
 		{
-			std::cout << testTime << std::endl;
-			mPos.x = mPos.x + 1 * (animationSpeed * testTime);
-
-			/* 
-			
-			mPos.x = mPos.x + 1 * (animationSpeed * time^2);
-			
-			*/
+			//mPos.x = mPos.x + 1 * (animationSpeed * testTime);
 		}
 		else
 		{
@@ -39,13 +39,16 @@ void PhysicsComponent::updatePosition()
 	}
 	else if (mPos.y != mNewPosition.y)
 	{
+
 		if (mNewPosition.y > mPos.y)
 		{
-			std::cout << "Current Time: " << Game::easingMan->easeOut(Game::easingMan->getCurrentTime(), mPos.y, mNewPosition.y, animationSpeed) << std::endl;
-			mPos.y = mPos.y + 1 + Game::easingMan->easeOut(Game::easingMan->getCurrentTime(), mPos.y, mNewPosition.y, animationSpeed); //* testTime
+			mPos.y = mPos.y + 1; //* testTime
 		}
 		else {
-			mPos.y = mPos.y - 1 * animationSpeed;
+			//std::cout << clock->getTicks() << std::endl;
+			//std::cout << "Moved pixels: " << Game::easingMan->easeOut(clock->getTicks(), 0, 160, 1000) << std::endl;
+			//std::cout << Game::easingMan->easeOut(clock->getTicks(), 560, 560 - 160, 1000) << std::endl;
+			mPos.y = Game::easingMan->easeOut(clock->getTicks(), 560, 400, 3000);
 		}
 	}
 }
@@ -58,6 +61,7 @@ Position PhysicsComponent::getHomePosition()
 void PhysicsComponent::setNewPosition(Position pos)
 {
 	mNewPosition = pos;
+	clock->start();
 }
 
 void PhysicsComponent::setNewSize(Size size)
@@ -68,7 +72,7 @@ void PhysicsComponent::setNewSize(Size size)
 
 void PhysicsComponent::update()
 {
-	testTime = testTime + 1;
+	//std::cout << clock->getTicks() << std::endl;
 	this->updatePosition();
 	//updateSize();
 }

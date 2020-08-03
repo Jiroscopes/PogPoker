@@ -152,6 +152,7 @@
     <ClInclude Include="..\include\table.h" />
     <ClInclude Include="..\include\TextureManager.h" />
     <ClInclude Include="..\include\tile.h" />
+    <ClInclude Include="..\include\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Card.cpp" />
@@ -169,6 +170,7 @@
     <ClCompile Include="..\src\table.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
     <ClCompile Include="..\src\tile.cpp" />
+    <ClCompile Include="..\src\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\assets\main.map" />

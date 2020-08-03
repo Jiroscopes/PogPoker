@@ -1,6 +1,7 @@
 #pragma once
 #include "Component.h"
 #include "Entity.h"
+#include "Timer.h"
 
 struct Position {
 	int x;
@@ -19,7 +20,7 @@ private:
 	Position mPos;
 	Position mNewPosition;
 	Position homePosition;
-	float testTime = 2;
+	Timer* clock;
 	Size mNewSize;
 	Size mSize;
 	float animationSpeed;
@@ -29,6 +30,7 @@ public:
 	int id = 3;
 
 	PhysicsComponent(Entity* owner, Position pos, Size size);
+	~PhysicsComponent();
 	void update();
 
 	void setSpeed(float speed);
