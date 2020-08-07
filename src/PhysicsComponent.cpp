@@ -8,15 +8,19 @@ bool operator == (const Position& lhs, const Position& rhs)
 {
 	return lhs.x == rhs.x && lhs.y == rhs.y;
 }
+bool operator != (const Position& lhs, const Position& rhs)
+{
+	return lhs.x != rhs.x || lhs.y != rhs.y;
+}
 
 PhysicsComponent::PhysicsComponent(Entity* owner, Position pos, Size size)
 {
 	owner = owner;
 	mPos = pos;
 	mSize = size;
-	mNewPosition = pos;
 	homePosition = pos;
-	//mNewPosition = size;
+	mNewPosition = pos;
+	lastStablePosition = pos;
 	clock = new Timer();
 }
 
@@ -27,29 +31,15 @@ PhysicsComponent::~PhysicsComponent()
 
 void PhysicsComponent::updatePosition()
 {
-	if (mPos.x != mNewPosition.x) {
-		if (mNewPosition.x > mPos.x)
-		{
-			//mPos.x = mPos.x + 1 * (animationSpeed * testTime);
-		}
-		else
-		{
-			mPos.x = mPos.x - 1 * animationSpeed;
-		}
-	}
-	else if (mPos.y != mNewPosition.y)
-	{
 
-		if (mNewPosition.y > mPos.y)
-		{
-			mPos.y = mPos.y + 1; //* testTime
-		}
-		else {
-			//std::cout << clock->getTicks() << std::endl;
-			//std::cout << "Moved pixels: " << Game::easingMan->easeOut(clock->getTicks(), 0, 160, 1000) << std::endl;
-			//std::cout << Game::easingMan->easeOut(clock->getTicks(), 560, 560 - 160, 1000) << std::endl;
-			mPos.y = Game::easingMan->easeOut(clock->getTicks(), 560, 400, 3000);
-		}
+	if (mPos != mNewPosition)
+	{
+		mPos.x = Game::easingMan->easeOut(clock->getTicks(), mPos.x, (mNewPosition.x - mPos.x) + 1, 3000);
+		mPos.y = Game::easingMan->easeOut(clock->getTicks(), mPos.y, (mNewPosition.y - mPos.y) + 1, 3000);
+	}
+	else
+	{
+		lastStablePosition = mPos;
 	}
 }
 

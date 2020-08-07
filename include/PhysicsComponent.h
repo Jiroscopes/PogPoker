@@ -20,6 +20,7 @@ private:
 	Position mPos;
 	Position mNewPosition;
 	Position homePosition;
+	Position lastStablePosition;
 	Timer* clock;
 	Size mNewSize;
 	Size mSize;

@@ -48,7 +48,6 @@ Card** Deck::deal()
 
 		// Add the components to the Card
 		hand[0]->addComponent<EventComponent*>(new EventComponent(hand[0], events));
-
 		PhysicsComponent* firstHandCardPhysics = new PhysicsComponent(hand[0], { 5 * 80, 7 * 80 }, { 240, 320 });
 		
 		hand[0]->addComponent<PhysicsComponent*>(firstHandCardPhysics);
@@ -62,7 +61,10 @@ Card** Deck::deal()
 
 		hand[1] = deck.back();
 
-		hand[1]->addComponent<PhysicsComponent*>(new PhysicsComponent(hand[1], { 8*80, 7*80}, { 240, 320 }));
+		hand[0]->addComponent<EventComponent*>(new EventComponent(hand[1], events));
+		PhysicsComponent* secondHandCardPhysics = new PhysicsComponent(hand[1], { 8 * 80, 7 * 80 }, { 240, 320 });
+
+		hand[1]->addComponent<PhysicsComponent*>(secondHandCardPhysics);
 		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[1]->getFilename().c_str(), hand[1]));
 
 		entityManager->addEntity(hand[1]);
