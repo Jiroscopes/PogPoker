@@ -5,10 +5,16 @@
 class EntityManager
 {
 private:
+	unsigned int entityID;
 	std::vector<Entity*> entities;
 public:
-	void addEntity(Entity* entity);
 	Entity* getEntity(int id);
+	
+	void addEntity(Entity* entity);
+	void removeEntity(unsigned int id);
+
+	unsigned int getLastInsertedID();
+
 	//void addRenderer(SDL_Renderer* rendererRef) { renderer = rendererRef; }
 	//SDL_Renderer* getRenderer() { return renderer; }
 	void update();

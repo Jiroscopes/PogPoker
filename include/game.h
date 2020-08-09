@@ -5,6 +5,8 @@
 #include "SDL_image.h"
 #include "EventManager.h"
 #include "Easing.h"
+#include "EntityManager.h"
+#include "SceneStateMachine.h"
 
 #undef main
 
@@ -17,6 +19,9 @@ private:
 
 
 public:
+
+	int window_height;
+	int window_width;
 	Game();
 	~Game();
 
@@ -27,7 +32,10 @@ public:
 	void clean();
 
 	bool running();
+
 	static SDL_Renderer* renderer;
+	static EntityManager* entityManager;
 	static EventManager* eventManager;
 	static Easing* easingMan;
+	static SceneStateMachine* sceneManager;
 };

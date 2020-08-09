@@ -2,13 +2,12 @@
 #include "TextureManager.h"
 #include "deck.h"
 #include "map.h"
-#include "EntityManager.h"
 #include "table.h"
 
-EntityManager* entityManager = new EntityManager();
-Deck* startingDeck = nullptr;
-Map* map = nullptr;
-Table* table = nullptr;
+EntityManager* Game::entityManager = new EntityManager();
+//Deck* startingDeck = nullptr;
+//Map* map = nullptr;
+//Table* table = nullptr;
 
 
 int window_height = 720;
@@ -17,6 +16,7 @@ int window_width = 1280;
 SDL_Renderer* Game::renderer = nullptr;
 EventManager* Game::eventManager = nullptr;
 Easing* Game::easingMan = nullptr;
+SceneStateMachine* Game::sceneManager = nullptr;
 
 SDL_Rect cursor;
 
@@ -55,12 +55,14 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		isRunning = false;
 	}
 	eventManager = new EventManager();
+	sceneManager = new SceneStateMachine();
 	easingMan = new Easing();
-	map = new Map(window_width, window_height);
-	table = new Table();
-	startingDeck = new Deck(entityManager);
-	startingDeck->shuffle();
-	Card** hand = startingDeck->deal();
+
+	//map = new Map(window_width, window_height);
+	//table = new Table();
+	//startingDeck = new Deck(entityManager);
+	//startingDeck->shuffle();
+	//Card** hand = startingDeck->deal();
 }
 
 void Game::handleEvents()
@@ -113,8 +115,9 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
 	// add to render
-	map->draw();
-	table->render();
+	//map->draw();
+	//sceneManager->render(); // render scenes
+	//table->render();
 	entityManager->render();
 	SDL_RenderPresent(renderer);
 }

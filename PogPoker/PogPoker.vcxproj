@@ -146,8 +146,12 @@
     <ClInclude Include="..\include\EventManager.h" />
     <ClInclude Include="..\include\game.h" />
     <ClInclude Include="..\include\GraphicsComponent.h" />
+    <ClInclude Include="..\include\MainMenu.h" />
     <ClInclude Include="..\include\map.h" />
     <ClInclude Include="..\include\PhysicsComponent.h" />
+    <ClInclude Include="..\include\PlayScene.h" />
+    <ClInclude Include="..\include\Scene.h" />
+    <ClInclude Include="..\include\SceneStateMachine.h" />
     <ClInclude Include="..\include\SpriteComponent.h" />
     <ClInclude Include="..\include\table.h" />
     <ClInclude Include="..\include\TextureManager.h" />
@@ -167,6 +171,8 @@
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\map.cpp" />
     <ClCompile Include="..\src\PhysicsComponent.cpp" />
+    <ClCompile Include="..\src\PlayScene.cpp" />
+    <ClCompile Include="..\src\SceneStateMachine.cpp" />
     <ClCompile Include="..\src\table.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />
     <ClCompile Include="..\src\tile.cpp" />
