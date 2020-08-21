@@ -2,14 +2,13 @@
 #include "Component.h"
 #include <vector>
 #include "SDL.h"
+#include <iostream>
 
 class Entity
 {
 private:
 	std::vector<Component*> components;
 	std::vector<int> componentLoc;
-	//float xPos = 0;
-	//float yPos = 0;
 public:
 	Entity();
 
@@ -32,10 +31,6 @@ public:
 		return temp; 
 	}
 
-	//float getXPosition() { return xPos; }
-	//float getYPosition() { return yPos; }
-	//void setXPosition() {};
-	//void setYPosition() {};
 	virtual void triggerEvent(int eventType) = 0;
 	void update();
 	void render();

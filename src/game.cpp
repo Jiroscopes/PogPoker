@@ -3,6 +3,8 @@
 #include "deck.h"
 #include "map.h"
 #include "table.h"
+#include "PlayScene.h"
+#include <memory>
 
 EntityManager* Game::entityManager = new EntityManager();
 //Deck* startingDeck = nullptr;
@@ -58,6 +60,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	sceneManager = new SceneStateMachine();
 	easingMan = new Easing();
 
+	// Load the play scene
+	//PlayScene* play = new PlayScene();
+	//sceneManager->addScene(std::make_shared<PlayScene>(*play));
+	
 	//map = new Map(window_width, window_height);
 	//table = new Table();
 	//startingDeck = new Deck(entityManager);

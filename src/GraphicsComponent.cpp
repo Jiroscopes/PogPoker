@@ -6,6 +6,7 @@
 GraphicsComponent::GraphicsComponent(const char* textureSheet, Entity* entity)
 {
 	owner = entity;
+	renderFlag = true;
 	mEntityPhysics = entity->getComponent<PhysicsComponent*>(3);
 
 	objTexture = TextureManager::LoadTexture(textureSheet);
@@ -25,6 +26,16 @@ GraphicsComponent::GraphicsComponent(const char* textureSheet, Entity* entity)
 GraphicsComponent::~GraphicsComponent()
 {}
 
+void GraphicsComponent::setRenderFlag(bool flagValue)
+{
+	renderFlag = flagValue;
+}
+
+bool GraphicsComponent::getRenderFlag()
+{
+	return renderFlag;
+}
+
 void GraphicsComponent::update()
 {
 	Position* entityPos = mEntityPhysics->getPosition();
@@ -39,8 +50,12 @@ void GraphicsComponent::update()
 
 void GraphicsComponent::render()
 {	
-	if (SDL_RenderCopy(Game::renderer, objTexture, &tBox, &mBox))
+	// If the element is meant to be rendered
+	if (renderFlag)
 	{
-		std::cout << "Render Success" << std::endl;
-	};
+		if (SDL_RenderCopy(Game::renderer, objTexture, &tBox, &mBox))
+		{
+			std::cout << "Render Success" << std::endl;
+		};
+	}
 }

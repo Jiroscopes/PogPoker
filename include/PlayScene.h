@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "deck.h"
 #include "map.h"
+#include "GraphicsComponent.h"
 
 class PlayScene : public Scene
 {
@@ -9,12 +10,16 @@ private:
 
 	Deck* deck;
 	Map* map;
+	std::vector<Entity*> sceneEntities;
+	std::vector<GraphicsComponent*> sceneEntitiesGraphics;
+
+	void loadEntityIntoVectors(Entity* ent);
 
 public:
 	PlayScene();
 
-	void onCreate() = 0;
-	void onDestroy() = 0;
+	void onCreate();
+	void onDestroy();
 
 	void onActivate();
 	void onDeactivate();
