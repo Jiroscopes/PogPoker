@@ -11,7 +11,7 @@ private:
 	Tile* tileSet[TOTAL_TILES];
 	SDL_Texture* mMap;
 public:
-	Map(int width, int height);
+	Map(int width, int height, const char* fileName);
 	bool setTiles(Tile* tiles[]);
 	void draw();
 };

@@ -4,7 +4,6 @@
 #include "SDL.h"
 #include "PhysicsComponent.h"
 
-
 class GraphicsComponent : public Component
 {
 private:
@@ -15,7 +14,7 @@ private:
 	bool renderFlag;
 public:
 	int id = 2;
-	GraphicsComponent(const char* textureSheet, Entity* entity);
+	GraphicsComponent(Entity* entity, const char* textureSheet, Size textureSize);
 	~GraphicsComponent();
 	void setHeight(int h) { mBox.h = h; }
 	void setWidth(int w) { mBox.w = w; }

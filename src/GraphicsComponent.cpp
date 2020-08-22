@@ -3,17 +3,20 @@
 #include "EntityManager.h"
 #include "game.h"
 
-GraphicsComponent::GraphicsComponent(const char* textureSheet, Entity* entity)
+GraphicsComponent::GraphicsComponent(Entity* entity, const char* textureSheet, Size textureSize)
 {
 	owner = entity;
 	renderFlag = true;
 
 	mEntityPhysics = entity->getComponent<PhysicsComponent*>(3);
-
+	
 	objTexture = TextureManager::LoadTexture(textureSheet);
 	std::cout << objTexture << std::endl;
 	Position* entityPos = mEntityPhysics->getPosition();
 	Size* entitySize = mEntityPhysics->getSize();
+
+	// mBox is size on screen
+	// tBox is texture
 
 	mBox.x = entityPos->x;
 	mBox.y = entityPos->y;
@@ -21,8 +24,8 @@ GraphicsComponent::GraphicsComponent(const char* textureSheet, Entity* entity)
 	mBox.h = entitySize->height;
 	mBox.w = entitySize->width;
 
-	tBox.h = 726;
-	tBox.w = 500;
+	tBox.h = textureSize.height;
+	tBox.w = textureSize.width;
 }
 
 GraphicsComponent::~GraphicsComponent()
@@ -57,14 +60,6 @@ void GraphicsComponent::render()
 
 	if (renderFlag)
 	{
-		if (SDL_RenderCopy(Game::renderer, objTexture, &tBox, &mBox))
-		{
-			std::cout << "Render Success" << std::endl;
-		}
-		else
-		{
-			//std::cout << "Render failed" << std::endl;
-			std::cout << SDL_GetError() << std::endl;
-		};
+		SDL_RenderCopy(Game::renderer, objTexture, &tBox, &mBox);
 	}
 }

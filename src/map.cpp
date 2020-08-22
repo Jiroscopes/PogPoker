@@ -4,11 +4,11 @@
 #include <fstream>
 #include "TextureManager.h"
 
-Map::Map(int width, int height)
+Map::Map(int width, int height, const char* fileName)
 {
 	screenWidth = width;
 	screenHeight = height;
-	const char* path = "../assets/map-tileset.png";
+	const char* path = fileName;
 
 	mMap = TextureManager::LoadTexture(path);
 

@@ -51,7 +51,7 @@ Card** Deck::deal()
 		PhysicsComponent* firstHandCardPhysics = new PhysicsComponent(hand[0], { 5 * 80, 7 * 80 }, { 240, 320 });
 		
 		hand[0]->addComponent<PhysicsComponent*>(firstHandCardPhysics);
-		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[0]->getFilename().c_str(), hand[0]));
+		hand[0]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[0], hand[0]->getFilename().c_str(), {726, 500}));
 
 		// Add the card to our entity manager so that it can handle the rest.
 		entityManager->addEntity(hand[0]);
@@ -65,7 +65,7 @@ Card** Deck::deal()
 		PhysicsComponent* secondHandCardPhysics = new PhysicsComponent(hand[1], { 8 * 80, 7 * 80 }, { 240, 320 });
 
 		hand[1]->addComponent<PhysicsComponent*>(secondHandCardPhysics);
-		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[1]->getFilename().c_str(), hand[1]));
+		hand[1]->addComponent<GraphicsComponent*>(new GraphicsComponent(hand[1], hand[1]->getFilename().c_str(), {726, 500}));
 
 		entityManager->addEntity(hand[1]);
 

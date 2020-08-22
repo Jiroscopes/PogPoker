@@ -12,7 +12,7 @@ PlayScene::PlayScene() : deck(0), map(0) {}
 void PlayScene::onCreate()
 {
 	// load all entities for the scene
-	map = new Map(1280, 720);
+	map = new Map(1280, 720, "../assets/map-tileset.png");
 	deck = new Deck(Game::entityManager);
 	deck->shuffle();
 	Card** hand = deck->deal();
