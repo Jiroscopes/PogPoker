@@ -17,6 +17,7 @@ public:
 
 	//void addRenderer(SDL_Renderer* rendererRef) { renderer = rendererRef; }
 	//SDL_Renderer* getRenderer() { return renderer; }
+
 	void update();
 	void render();
 };

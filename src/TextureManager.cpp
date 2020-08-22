@@ -18,6 +18,7 @@ SDL_Texture* TextureManager::LoadTexture(const char* texture)
 	if (tempSurface == nullptr)
 	{
 		std::cout << SDL_GetError() << std::endl;
+		SDL_ClearError();
 	}
 	return tex;
 }

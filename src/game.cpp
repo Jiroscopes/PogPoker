@@ -4,6 +4,7 @@
 #include "map.h"
 #include "table.h"
 #include "PlayScene.h"
+#include "MainMenu.h"
 #include <memory>
 
 EntityManager* Game::entityManager = new EntityManager();
@@ -62,8 +63,10 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// Load the play scene
 	//PlayScene* play = new PlayScene();
+	MainMenu* mainScene = new MainMenu();
 	//sceneManager->addScene(std::make_shared<PlayScene>(*play));
-	
+	sceneManager->addScene(std::make_shared<MainMenu>(*mainScene));
+
 	//map = new Map(window_width, window_height);
 	//table = new Table();
 	//startingDeck = new Deck(entityManager);

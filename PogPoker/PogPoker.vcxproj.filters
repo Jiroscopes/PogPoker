@@ -102,6 +102,9 @@
     <ClInclude Include="..\include\PlayScene.h">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\MenuOption.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\deck.cpp">
@@ -160,6 +163,9 @@
     </ClCompile>
     <ClCompile Include="..\src\MainMenu.cpp">
       <Filter>Source Files\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\MenuOption.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,12 +2,15 @@
 
 #include "Scene.h"
 #include "SDL.h"
+#include "MenuOption.h"
+#include <vector>
 
 class MainMenu : public Scene
 {
 
 private:
-	SDL_Rect testButton;
+	std::vector<MenuOption*> menuOptions;
+
 public:
 
 	MainMenu();

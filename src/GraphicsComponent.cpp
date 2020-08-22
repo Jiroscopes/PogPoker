@@ -7,9 +7,11 @@ GraphicsComponent::GraphicsComponent(const char* textureSheet, Entity* entity)
 {
 	owner = entity;
 	renderFlag = true;
+
 	mEntityPhysics = entity->getComponent<PhysicsComponent*>(3);
 
 	objTexture = TextureManager::LoadTexture(textureSheet);
+	std::cout << objTexture << std::endl;
 	Position* entityPos = mEntityPhysics->getPosition();
 	Size* entitySize = mEntityPhysics->getSize();
 
@@ -51,11 +53,18 @@ void GraphicsComponent::update()
 void GraphicsComponent::render()
 {	
 	// If the element is meant to be rendered
+
+
 	if (renderFlag)
 	{
 		if (SDL_RenderCopy(Game::renderer, objTexture, &tBox, &mBox))
 		{
 			std::cout << "Render Success" << std::endl;
+		}
+		else
+		{
+			//std::cout << "Render failed" << std::endl;
+			std::cout << SDL_GetError() << std::endl;
 		};
 	}
 }
