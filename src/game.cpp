@@ -63,9 +63,9 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// Load the play scene
 	//PlayScene* play = new PlayScene();
-	//MainMenu* mainScene = new MainMenu();
+	MainMenu* mainScene = new MainMenu();
 	//sceneManager->addScene(std::make_shared<PlayScene>(*play));
-	//sceneManager->addScene(std::make_shared<MainMenu>(*mainScene));
+	sceneManager->addScene(std::make_shared<MainMenu>(*mainScene));
 
 	map = new Map(1280, 720, ""); //../assets/map-tileset.png
 	//table = new Table();

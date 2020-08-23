@@ -5,8 +5,8 @@
 
 MenuOption::MenuOption(unsigned int id) : id(id)
 {
-	this->addComponent<PhysicsComponent*>(new PhysicsComponent(this, {0, 0}, {4 * 80, 1 * 80}));
-	this->addComponent<GraphicsComponent*>(new GraphicsComponent(this, "../assets/play.png", {404, 430}));
+	this->addComponent<PhysicsComponent*>(new PhysicsComponent(this, { 80, 3 * 80}, { 4 * 80, 1 * 80 }));
+	this->addComponent<GraphicsComponent*>(new GraphicsComponent(this, "../assets/play.png", {400, 80}));
 	this->addComponent<EventComponent*>(new EventComponent(this, events));
 }
 

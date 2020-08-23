@@ -87,7 +87,7 @@ void Map::draw()
 {
 	int i;
 
-	SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
+	//SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
 
 	for (i = 0; i < TOTAL_TILES; i++)
 	{
