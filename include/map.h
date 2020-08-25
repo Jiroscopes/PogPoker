@@ -10,8 +10,9 @@ private:
 	int screenWidth, screenHeight;
 	Tile* tileSet[TOTAL_TILES];
 	SDL_Texture* mMap;
+	bool showGrid;
 public:
-	Map(int width, int height, const char* fileName);
+	Map(int width, int height, const char* fileName, bool SHOW_GRID = false);
 	bool setTiles(Tile* tiles[]);
 	void draw();
 };

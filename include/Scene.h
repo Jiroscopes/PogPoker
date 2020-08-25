@@ -13,6 +13,6 @@ public:
 
 	//virtual void processInput() {};
 	//virtual void update() {};
-	//virtual void render() {};
+	virtual void renderMap() {};
 
 };

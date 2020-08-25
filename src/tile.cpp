@@ -24,7 +24,7 @@ void Tile::render()
 {
 	int x, y;
 	SDL_RenderCopy(Game::renderer, tileTexture, &tBox, &mBox);
-	SDL_RenderDrawRect(Game::renderer, &mBox);
+	//SDL_RenderDrawRect(Game::renderer, &mBox);
 }
 
 int Tile::getType()

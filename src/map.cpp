@@ -4,11 +4,14 @@
 #include <fstream>
 #include "TextureManager.h"
 
-Map::Map(int width, int height, const char* fileName)
+Map::Map(int width, int height, const char* fileName, bool SHOW_GRID)
 {
 	screenWidth = width;
 	screenHeight = height;
 	const char* path = fileName;
+
+	// Debug grid?
+	showGrid = SHOW_GRID;
 
 	mMap = TextureManager::LoadTexture(path);
 
@@ -87,11 +90,15 @@ void Map::draw()
 {
 	int i;
 
-	//SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
+	if (showGrid)
+	{
+		SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
+	}
 
 	for (i = 0; i < TOTAL_TILES; i++)
 	{
 		tileSet[i]->render();
 	}
+
 	SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 0);
 }

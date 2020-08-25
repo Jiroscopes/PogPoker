@@ -1,6 +1,7 @@
 #include "SceneStateMachine.h"
+#include <iostream>
 
-SceneStateMachine::SceneStateMachine() : scenes(0), currentScene(0) {} 
+SceneStateMachine::SceneStateMachine() : scenes(0) {} 
 
 //void SceneStateMachine::processInput()
 //{
@@ -18,13 +19,17 @@ SceneStateMachine::SceneStateMachine() : scenes(0), currentScene(0) {}
 //	}
 //}
 
-//void SceneStateMachine::render()
-//{
-//	if (currentScene)
-//	{
-//		currentScene->render();
-//	}
-//}
+void SceneStateMachine::render()
+{
+	if (currentScene)
+	{
+		currentScene->renderMap();
+	}
+	else
+	{
+		std::cout << "No worky" << std::endl;
+	}
+}
 
 unsigned int SceneStateMachine::addScene(std::shared_ptr<Scene> scene)
 {

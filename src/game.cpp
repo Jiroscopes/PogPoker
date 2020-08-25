@@ -9,8 +9,7 @@
 
 EntityManager* Game::entityManager = new EntityManager();
 //Deck* startingDeck = nullptr;
-Map* map = nullptr;
-//Table* table = nullptr;
+Table* table = nullptr;
 
 
 //int window_height = 720;
@@ -49,7 +48,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		renderer = SDL_CreateRenderer(window, -1, 0);
 		if (renderer)
 		{
-			SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+			SDL_SetRenderDrawColor(renderer, 0, 0, 95, 255);
 			std::cout << "Renderer created!" << std::endl;
 		}
 		isRunning = true;
@@ -66,8 +65,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	MainMenu* mainScene = new MainMenu();
 	//sceneManager->addScene(std::make_shared<PlayScene>(*play));
 	sceneManager->addScene(std::make_shared<MainMenu>(*mainScene));
+	sceneManager->switchToScene(0);
 
-	map = new Map(1280, 720, ""); //../assets/map-tileset.png
 	//table = new Table();
 	//startingDeck = new Deck(entityManager);
 	//startingDeck->shuffle();
@@ -115,8 +114,8 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	entityManager->update();
-	easingMan->update();
+	//entityManager->update();
+	//easingMan->update();
 }
 
 void Game::render()
@@ -124,10 +123,9 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	SDL_RenderSetLogicalSize(renderer, window_width, window_height);
 	// add to render
-	map->draw();
-	//sceneManager->render(); // render scenes
+	sceneManager->render(); // render scene map
 	//table->render();
-	entityManager->render();
+	//entityManager->render();
 	SDL_RenderPresent(renderer);
 }
 

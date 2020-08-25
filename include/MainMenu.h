@@ -11,7 +11,7 @@ class MainMenu : public Scene
 
 private:
 	std::vector<MenuOption*> menuOptions;
-	//Map* map;
+	Map* map;
 public:
 
 	MainMenu();
@@ -21,4 +21,6 @@ public:
 
 	void onActivate();
 	void onDeactivate();
+
+	void renderMap();
 };
