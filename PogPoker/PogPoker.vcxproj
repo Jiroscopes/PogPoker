@@ -146,6 +146,7 @@
     <ClInclude Include="..\include\EventManager.h" />
     <ClInclude Include="..\include\game.h" />
     <ClInclude Include="..\include\GraphicsComponent.h" />
+    <ClInclude Include="..\include\Layer.h" />
     <ClInclude Include="..\include\MainMenu.h" />
     <ClInclude Include="..\include\map.h" />
     <ClInclude Include="..\include\MenuOption.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="..\src\EventManager.cpp" />
     <ClCompile Include="..\src\game.cpp" />
     <ClCompile Include="..\src\GraphicsComponent.cpp" />
+    <ClCompile Include="..\src\Layer.cpp" />
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\MainMenu.cpp" />
     <ClCompile Include="..\src\map.cpp" />

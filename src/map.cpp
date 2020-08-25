@@ -13,14 +13,32 @@ Map::Map(int width, int height, const char* fileName, bool SHOW_GRID)
 	// Debug grid?
 	showGrid = SHOW_GRID;
 
+	// Load the map texture
 	mMap = TextureManager::LoadTexture(path);
 
+	// Set the tiles based on the map file
 	if (setTiles(tileSet))
 	{
 		printf("Map loaded!\n");
 	}
 	else {
 		printf("Map loading failed!\n");
+	}
+
+	// Debug grid
+	if (SHOW_GRID)
+	{
+		// Load debug texture
+		debugTileTexture = TextureManager::LoadTexture("../assets/white-border-debug.png");
+
+		if (setDebugGrid())
+		{
+			printf("Debug Map loaded!\n");
+		}
+		else
+		{
+			printf("Debug Map loading failed!\n");
+		}
 	}
 }
 
@@ -29,11 +47,7 @@ bool Map::setTiles(Tile* tiles[])
 
 	bool tilesLoaded = true;
 	int tileType = -1;
-	int i, j;
-
-	// TODO: Move these and make them constants
-	int TILE_HEIGHT = 80;
-	int TILE_WIDTH = 80;
+	int i;
 
 	// offsets
 	int x = 0;
@@ -48,6 +62,14 @@ bool Map::setTiles(Tile* tiles[])
 	}
 	else
 	{
+
+		Layer* newLayer = new Layer(TOTAL_TILES);
+
+		// Add our layer to the array
+		mapLayers.push_back(newLayer);
+
+		std::vector<Tile*>* layerTiles = newLayer->getVector();
+
 		for (i = 0; i < TOTAL_TILES; i++)
 		{
 			map >> tileType;
@@ -62,7 +84,7 @@ bool Map::setTiles(Tile* tiles[])
 			
 			if (tileType >= 0)
 			{
-				tiles[i] = new Tile(x, y, tileType, mMap);
+				layerTiles->at(i) = new Tile(x, y, tileType, mMap);
 			}
 			else {
 				printf("Error loading map: Invalid tile type at %d!\n", i);
@@ -86,18 +108,56 @@ bool Map::setTiles(Tile* tiles[])
 	return tilesLoaded;
 }
 
+bool Map::setDebugGrid()
+{
+
+	if (!showGrid)
+	{
+		return false;
+	}
+
+	int i;
+
+	// offsets
+	int x = 0;
+	int y = 0;
+
+	Layer* newLayer = new Layer(TOTAL_TILES);
+
+	// Add our layer to the array
+	mapLayers.push_back(newLayer);
+
+	std::vector<Tile*>* layerTiles = newLayer->getVector();
+
+	for (i = 0; i < TOTAL_TILES; i++)
+	{
+		layerTiles->at(i) = new Tile(x, y, 0, debugTileTexture);
+
+		x += TILE_WIDTH;
+
+		// if we've reached the edge of the screen
+		if (x >= screenWidth)
+		{
+			// reset x, move y down
+			x = 0;
+			y += TILE_HEIGHT;
+		}
+	}
+	return true;
+}
+
 void Map::draw()
 {
 	int i;
 
-	if (showGrid)
+	for (Layer* layer: mapLayers)
 	{
-		SDL_SetRenderDrawColor(Game::renderer, 255, 255, 255, 255);
-	}
+		std::vector<Tile*>* layerTiles = layer->getVector();
 
-	for (i = 0; i < TOTAL_TILES; i++)
-	{
-		tileSet[i]->render();
+		for (i = 0; i < TOTAL_TILES; i++)
+		{
+			layerTiles->at(i)->render();
+		}
 	}
 
 	SDL_SetRenderDrawColor(Game::renderer, 0, 0, 0, 0);
