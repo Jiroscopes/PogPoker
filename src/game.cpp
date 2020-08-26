@@ -114,8 +114,8 @@ void Game::handleEvents()
 
 void Game::update()
 {
-	//entityManager->update();
-	//easingMan->update();
+	entityManager->update();
+	easingMan->update();
 }
 
 void Game::render()
@@ -125,7 +125,7 @@ void Game::render()
 	// add to render
 	sceneManager->render(); // render scene map
 	//table->render();
-	//entityManager->render();
+	entityManager->render();
 	SDL_RenderPresent(renderer);
 }
 

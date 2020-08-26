@@ -62,7 +62,6 @@ void PhysicsComponent::setNewSize(Size size)
 
 void PhysicsComponent::update()
 {
-	//std::cout << clock->getTicks() << std::endl;
 	this->updatePosition();
 	//updateSize();
 }

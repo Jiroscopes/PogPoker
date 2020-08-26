@@ -3,6 +3,8 @@
 #include "Entity.h"
 #include "Timer.h"
 
+// ID 3
+
 struct Position {
 	int x;
 	int y;

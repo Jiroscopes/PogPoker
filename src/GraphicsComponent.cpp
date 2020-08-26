@@ -26,10 +26,27 @@ GraphicsComponent::GraphicsComponent(Entity* entity, const char* textureSheet, S
 
 	tBox.h = textureSize.height;
 	tBox.w = textureSize.width;
+
+	clock = new Timer();
 }
 
 GraphicsComponent::~GraphicsComponent()
 {}
+
+void GraphicsComponent::setTextureBoxPosition(Position newPos)
+{
+	tempTexturePosition.x = newPos.x;
+	tempTexturePosition.y = newPos.y;
+	clock->start();
+}
+
+void GraphicsComponent::updateTextureBox()
+{
+	//tBox.x = Game::easingMan->easeOut(clock->getTicks(), tBox.x, (tempTexturePosition.x - tBox.x) + 1, 3000);
+	//tBox.y = Game::easingMan->easeOut(clock->getTicks(), tBox.y, (tempTexturePosition.y - tBox.y) + 1, 3000);
+	tBox.x = tempTexturePosition.x;
+	tBox.y = tempTexturePosition.y;
+}
 
 void GraphicsComponent::setRenderFlag(bool flagValue)
 {
@@ -49,8 +66,7 @@ void GraphicsComponent::update()
 	mBox.y = entityPos->y;
 	mBox.h = entitySize->height;
 	mBox.w = entitySize->width;
-	tBox.x = 0;
-	tBox.y = 0;
+	this->updateTextureBox();
 }
 
 void GraphicsComponent::render()
