@@ -8,10 +8,12 @@ private:
 	unsigned int entityID;
 	std::vector<Entity*> entities;
 public:
+	EntityManager();
+
 	Entity* getEntity(int id);
 	
 	void addEntity(Entity* entity);
-	void removeEntity(unsigned int id);
+	void removeEntity(Entity* id);
 
 	unsigned int getLastInsertedID();
 

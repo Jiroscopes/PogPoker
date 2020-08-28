@@ -1,6 +1,6 @@
 #include "MenuOption.h"
-
-
+#include "game.h"
+#include "PlayScene.h"
 #include "GraphicsComponent.h"
 
 MenuOption::MenuOption(unsigned int id, const char* texturePath, Position pos) : id(id), texturePath(texturePath), position(pos)
@@ -42,6 +42,20 @@ void MenuOption::triggerEvent(int eventType) {
 				gfxComponent->setTextureBoxPosition({ 0, 0 });
 				mouseInside = false;
 			}
+		}
+	}
+
+	if (eventType == 1)
+	{
+		//std::cout << mouseInside << std::endl;
+		if (mouseInside)
+		{
+			std::cout << "clicked" << std::endl;
+
+			PlayScene* playScene = new PlayScene();
+			Game::sceneManager->addScene(std::make_shared<PlayScene>(*playScene));
+			//std::cout << "Scene added!" << std::endl;
+			Game::sceneManager->switchToScene(1);
 		}
 	}
 }

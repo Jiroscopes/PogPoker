@@ -9,6 +9,8 @@ class Entity
 private:
 	std::vector<Component*> components;
 	std::vector<int> componentLoc;
+	int id;
+
 public:
 	Entity();
 
@@ -30,6 +32,10 @@ public:
 		T temp = (T)components[index];
 		return temp; 
 	}
+
+	void setID(int entID) { id = entID; }
+
+	int getID() { return id; }
 
 	virtual void triggerEvent(int eventType) = 0;
 	void update();

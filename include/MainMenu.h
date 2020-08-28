@@ -5,12 +5,14 @@
 #include "MenuOption.h"
 #include <vector>
 #include "map.h"
+#include "GraphicsComponent.h"
 
 class MainMenu : public Scene
 {
 
 private:
-	std::vector<MenuOption*> menuOptions;
+	std::vector<Entity*> sceneEntities;
+	std::vector<GraphicsComponent*> sceneEntitiesGraphics;
 	Map* map;
 public:
 
@@ -21,6 +23,8 @@ public:
 
 	void onActivate();
 	void onDeactivate();
+
+	void loadEntityIntoVectors(Entity* ent);
 
 	void renderMap();
 };

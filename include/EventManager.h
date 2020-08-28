@@ -18,5 +18,6 @@ private:
 public:
 	EventManager();
 	void registerEvent(EventComponent* eventHandler, MouseEvent eventType);
+	void removeEvent(EventComponent* eventComp);
 	void update(SDL_Event* event);
 };

@@ -6,7 +6,7 @@
 class MenuOption : public Entity
 {
 private:
-	bool active = false;
+	//bool active = false;
 	bool mouseInside = false;
 
 	std::vector<MouseEvent> events{ MouseDown, MouseMotion };

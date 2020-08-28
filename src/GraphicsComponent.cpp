@@ -11,7 +11,7 @@ GraphicsComponent::GraphicsComponent(Entity* entity, const char* textureSheet, S
 	mEntityPhysics = entity->getComponent<PhysicsComponent*>(3);
 	
 	objTexture = TextureManager::LoadTexture(textureSheet);
-	std::cout << objTexture << std::endl;
+	
 	Position* entityPos = mEntityPhysics->getPosition();
 	Size* entitySize = mEntityPhysics->getSize();
 

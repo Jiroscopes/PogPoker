@@ -69,6 +69,7 @@ void SceneStateMachine::switchToScene(unsigned int id)
 		{
 			// If we have a current scene, we call its OnDeactivate method.
 			currentScene->onDeactivate();
+			std::cout << "Deactivated current scene" << std::endl;
 		}
 
 		// Setting the current scene ensures that it is updated and drawn.
