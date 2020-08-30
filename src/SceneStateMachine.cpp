@@ -75,6 +75,6 @@ void SceneStateMachine::switchToScene(unsigned int id)
 		// Setting the current scene ensures that it is updated and drawn.
 		currentScene = it->second;
 
-		currentScene->onActivate();
+ 		currentScene->onActivate();
 	}
 }

@@ -3,6 +3,7 @@
 #include "Component.h"
 #include "EventComponent.h"
 #include <vector>
+#include <memory>
 
 struct MousePosition{
 	int x;
@@ -15,6 +16,7 @@ private:
 	std::vector<EventComponent*> mouseMotion;
 	std::vector<EventComponent*> mouseDown;
 	std::vector<EventComponent*> mouseUp;
+
 public:
 	EventManager();
 	void registerEvent(EventComponent* eventHandler, MouseEvent eventType);

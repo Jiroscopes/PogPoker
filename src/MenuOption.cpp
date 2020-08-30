@@ -45,9 +45,10 @@ void MenuOption::triggerEvent(int eventType) {
 		}
 	}
 
+
 	if (eventType == 1)
 	{
-		//std::cout << mouseInside << std::endl;
+		std::cout << "Triggered Click" << std::endl;
 		if (mouseInside)
 		{
 			std::cout << "clicked" << std::endl;

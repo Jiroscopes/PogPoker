@@ -9,7 +9,7 @@
 
 EntityManager* Game::entityManager = new EntityManager();
 //Deck* startingDeck = nullptr;
-Table* table = nullptr;
+//Table* table = nullptr;
 
 
 //int window_height = 720;
@@ -56,6 +56,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
+
 	eventManager = new EventManager();
 	sceneManager = new SceneStateMachine();
 	easingMan = new Easing();

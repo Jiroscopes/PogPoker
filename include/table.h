@@ -1,12 +1,13 @@
 #pragma once
 #include "TextureManager.h"
 
-class Table
+class Table : public Entity
 {
 private:
-	SDL_Texture* texture;
-	SDL_Rect mBox, tBox;
+	//std::string filename = "../assets/table.png";
 public:
 	Table();
-	void render();
+
+	void triggerEvent(int eventType);
+	void update();
 };

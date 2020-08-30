@@ -1,5 +1,7 @@
 #include "EventManager.h"
 #include <iostream>
+#include <memory>
+
 EventManager::EventManager()
 {
 
@@ -15,6 +17,7 @@ void EventManager::registerEvent(EventComponent* eventHandler, MouseEvent eventT
 		break;
 	case MouseDown:
 		mouseDown.push_back(eventHandler);
+		std::cout << mouseDown.size() << std::endl;
 		//std::cout << "Mouse Down Event Registered!" << std::endl;
 		break;
 	case MouseUp:
@@ -42,8 +45,10 @@ void EventManager::removeEvent(EventComponent* eventComp)
 	{
 		if (*it == eventComp)
 		{
+//			std::cout << mouseDown.size() << std::endl;
 			// erase() invalidates the iterator becuase the elements have to shift
 			it = mouseDown.erase(it);
+	//		std::cout << mouseDown.size() << std::endl;
 		}
 	}
 
@@ -66,27 +71,27 @@ void EventManager::update(SDL_Event* event)
 	case SDL_MOUSEBUTTONUP:
 		if (!mouseUp.empty())
 		{
-			for (EventComponent* x : mouseUp)
+			for (size_t i = 0; i < mouseUp.size(); ++i)
 			{
-				x->triggerEvent(MouseUp);
+				mouseUp[i]->triggerEvent(MouseUp);
 			}
 		}
 		break;
 	case SDL_MOUSEBUTTONDOWN:
 		if (!mouseDown.empty())
 		{
-			for (EventComponent* x : mouseDown)
+			for (size_t i = 0; i < mouseDown.size(); ++i)
 			{
-				x->triggerEvent(MouseDown);
+				mouseDown[i]->triggerEvent(MouseDown);
 			}
 		}
 		break;	
 	case SDL_MOUSEMOTION:
 		if (!mouseMotion.empty())
 		{
-			for (EventComponent* x : mouseMotion)
+			for (size_t i = 0; i < mouseMotion.size(); ++i)
 			{
-				x->triggerEvent(MouseMotion);
+				mouseMotion[i]->triggerEvent(MouseMotion);
 			}
 		}
 		break;

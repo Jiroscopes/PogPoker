@@ -24,5 +24,6 @@ public:
 	void onActivate();
 	void onDeactivate();
 
+	void renderMap();
 	//void setSceneSwitch();
 };

@@ -26,5 +26,6 @@ EventComponent::EventComponent(Entity* owner, std::vector<MouseEvent> mouseEvent
 
 void EventComponent::triggerEvent(MouseEvent eventType)
 {
+	//std::cout << &owner << std::endl;
 	owner->triggerEvent(eventType);
 }
