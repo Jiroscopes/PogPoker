@@ -136,6 +136,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\AnimationComponent.h" />
     <ClInclude Include="..\include\Card.h" />
     <ClInclude Include="..\include\Component.h" />
     <ClInclude Include="..\include\deck.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="..\include\MenuOption.h" />
     <ClInclude Include="..\include\PhysicsComponent.h" />
     <ClInclude Include="..\include\PlayScene.h" />
+    <ClInclude Include="..\include\PrettyEnitity.h" />
     <ClInclude Include="..\include\Scene.h" />
     <ClInclude Include="..\include\SceneStateMachine.h" />
     <ClInclude Include="..\include\SpriteComponent.h" />
@@ -161,6 +163,7 @@
     <ClInclude Include="..\include\Timer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\AnimationComponent.cpp" />
     <ClCompile Include="..\src\Card.cpp" />
     <ClCompile Include="..\src\deck.cpp" />
     <ClCompile Include="..\src\Easing.cpp" />
@@ -177,6 +180,7 @@
     <ClCompile Include="..\src\MenuOption.cpp" />
     <ClCompile Include="..\src\PhysicsComponent.cpp" />
     <ClCompile Include="..\src\PlayScene.cpp" />
+    <ClCompile Include="..\src\PrettyEntity.cpp" />
     <ClCompile Include="..\src\SceneStateMachine.cpp" />
     <ClCompile Include="..\src\table.cpp" />
     <ClCompile Include="..\src\TextureManager.cpp" />

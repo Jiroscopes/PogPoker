@@ -3,7 +3,7 @@
 #include "EntityManager.h"
 #include "game.h"
 
-GraphicsComponent::GraphicsComponent(Entity* entity, const char* textureSheet, Size textureSize)
+GraphicsComponent::GraphicsComponent(Entity* entity, const char* textureSheet, Size textureSize) : textureSize(textureSize)
 {
 	owner = entity;
 	renderFlag = true;
@@ -26,7 +26,7 @@ GraphicsComponent::GraphicsComponent(Entity* entity, const char* textureSheet, S
 
 	tBox.h = textureSize.height;
 	tBox.w = textureSize.width;
-
+	currentTextureBoxPosition = { 0,0 };
 	clock = new Timer();
 }
 
@@ -46,6 +46,7 @@ void GraphicsComponent::updateTextureBox()
 	//tBox.y = Game::easingMan->easeOut(clock->getTicks(), tBox.y, (tempTexturePosition.y - tBox.y) + 1, 3000);
 	tBox.x = tempTexturePosition.x;
 	tBox.y = tempTexturePosition.y;
+	currentTextureBoxPosition = { tBox.x, tBox.y };
 }
 
 void GraphicsComponent::setRenderFlag(bool flagValue)

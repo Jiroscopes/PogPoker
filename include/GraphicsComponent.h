@@ -18,16 +18,27 @@ private:
 	bool renderFlag;
 	Timer* clock;
 	Position tempTexturePosition = { 0, 0 };
+	Size textureSize;
+	Position currentTextureBoxPosition;
 public:
 	int id = 2;
 	GraphicsComponent(Entity* entity, const char* textureSheet, Size textureSize);
 	~GraphicsComponent();
+
 	void setHeight(int h) { mBox.h = h; }
 	void setWidth(int w) { mBox.w = w; }
+
 	void setRenderFlag(bool flagValue);
 	bool getRenderFlag();
+
+	// represents the frame size
+	Size getTextureSize() { return textureSize; }
+
+	Position getTextureBoxPosition() { return currentTextureBoxPosition; }
 	void setTextureBoxPosition(Position newPos);
+
 	void updateTextureBox();
+
 	void update();
 	void render();
 };
