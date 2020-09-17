@@ -1,43 +1,82 @@
 #pragma once
 #include "Component.h"
-#include <vector>
 #include "SDL.h"
+#include "ECS.h"
+
+#include <vector>
 #include <iostream>
+#include <algorithm>
+#include <memory>
 
 class Entity
 {
 private:
-	std::vector<Component*> components;
-	std::vector<int> componentLoc;
-	int id;
+	
+	ComponentList compList;
+	ComponentBitset compBitset;
+	std::vector<std::unique_ptr<Component>> components;
+	bool active;
 
 public:
-	Entity();
 
-	template <typename T>
-	void addComponent(T component)
+	Entity() = default;
+	~Entity() = default;
+
+	template <typename T, typename... TArgs>
+	inline T& addComponent(TArgs&&... args)
 	{
-		componentLoc.push_back(component->id);
-		components.push_back(component);
-	}
+		// Create new component with the supplied args
+		T* comp(new T(std::forward<TArgs>(args)...));\
 
-	template<typename T> T getComponent(int id) {
-		std::vector<int>::iterator compID = std::find(componentLoc.begin(), componentLoc.end(), id);
-		if (compID == componentLoc.end())
+		std::unique_ptr<Component> uptr { comp };
+
+		// Add the pointer to vec of components
+		components.emplace_back(std::move(uptr));
+
+		// assign the owner
+		comp->entity = this;
+
+		if (comp->init())
 		{
-			std::cout << "FUCK" << std::endl;
-			return 0;
+			compList[getComponentTypeID<T>()] = comp;
+			compBitset[getComponentTypeID<T>()] = comp;
+
+			return *comp;
 		}
-		int index = std::distance(componentLoc.begin(), compID);
-		T temp = (T)components[index];
-		return temp; 
+
+		// Return nullptr if fails
+		return *static_cast<T*>(nullptr);
 	}
 
-	void setID(int entID) { id = entID; }
 
-	int getID() { return id; }
+	template<typename T>
+	inline T& getComponent() const
+	{
+		auto ptr = compList[getComponentTypeID<T>()];
+		return *static_cast<T*>(ptr);
+	}
 
 	virtual void triggerEvent(int eventType) = 0;
-	void update();
-	void render();
+
+	inline bool isActive() const
+	{
+		return active;
+	}
+
+	inline void destroy()
+	{
+		active = false;
+	}
+
+	inline void render()
+	{
+		for (auto& comp : components)
+			comp->render();
+	}
+
+	inline void update()
+	{
+		for (auto& comp : components)
+			comp->update();
+	}
 };

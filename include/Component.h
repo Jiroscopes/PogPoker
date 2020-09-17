@@ -4,7 +4,12 @@ class Component
 {
 private:
 public:
-	int id;
+	// Hold pointer to its owner
+	//Entity* entity;
+
+	virtual bool init() { return true; }
 	virtual void update() = 0;
-	//virtual void render() = 0;
+
+	// Not required by all components
+	virtual void render() {}
 };

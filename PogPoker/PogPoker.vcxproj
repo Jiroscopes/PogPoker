@@ -141,6 +141,7 @@
     <ClInclude Include="..\include\Component.h" />
     <ClInclude Include="..\include\deck.h" />
     <ClInclude Include="..\include\Easing.h" />
+    <ClInclude Include="..\include\ECS.h" />
     <ClInclude Include="..\include\Entity.h" />
     <ClInclude Include="..\include\EntityManager.h" />
     <ClInclude Include="..\include\EventComponent.h" />
@@ -167,7 +168,6 @@
     <ClCompile Include="..\src\Card.cpp" />
     <ClCompile Include="..\src\deck.cpp" />
     <ClCompile Include="..\src\Easing.cpp" />
-    <ClCompile Include="..\src\Entity.cpp" />
     <ClCompile Include="..\src\EntityManager.cpp" />
     <ClCompile Include="..\src\EventComponent.cpp" />
     <ClCompile Include="..\src\EventManager.cpp" />

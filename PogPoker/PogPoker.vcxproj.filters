@@ -114,6 +114,9 @@
     <ClInclude Include="..\include\AnimationComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\ECS.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\deck.cpp">
@@ -132,9 +135,6 @@
       <Filter>Source Files\Components</Filter>
     </ClCompile>
     <ClCompile Include="..\src\EntityManager.cpp">
-      <Filter>Source Files\ECS</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\Entity.cpp">
       <Filter>Source Files\ECS</Filter>
     </ClCompile>
     <ClCompile Include="..\src\table.cpp">

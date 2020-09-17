@@ -4,14 +4,13 @@
 #include "GraphicsComponent.h"
 
 Entity::Entity()
-{
-}
+{}
 
 void Entity::update()
 {
-	for (Component* comp : components)
+	for (std::pair<int, Component*> comp : componentArray)
 	{
-		comp->update();
+		comp.second->update();
 	}
 }
 

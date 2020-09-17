@@ -3,9 +3,15 @@
 
 EntityManager::EntityManager() : entityID(0) {}
 
+
+void EntityManager::createEntity()
+{
+
+}
+
 void EntityManager::addEntity(Entity* entity)
 {
-	entity->setID(getLastInsertedID());
+	//entity->setID(getLastInsertedID());
 	//std::cout << "Added" << std::endl;
 	entities.push_back(entity);
 	entityID++;

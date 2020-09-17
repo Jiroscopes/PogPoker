@@ -12,13 +12,12 @@ public:
 
 	Entity* getEntity(int id);
 	
+	void createEntity();
+
 	void addEntity(Entity* entity);
 	void removeEntity(Entity* id);
 
 	unsigned int getLastInsertedID();
-
-	//void addRenderer(SDL_Renderer* rendererRef) { renderer = rendererRef; }
-	//SDL_Renderer* getRenderer() { return renderer; }
 
 	void update();
 	void render();
