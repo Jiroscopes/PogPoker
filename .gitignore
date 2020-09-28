@@ -1,0 +1,14 @@
+
+# Directories
+cmake-build-debug/
+assets/
+.idea/
+.git/
+
+
+# Files
+*.dll
+*.png
+*.jpg
+*.exe
+*.txt
